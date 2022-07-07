@@ -1,0 +1,107 @@
+<%- include('../templates/headProductos') %> 
+    <main class="bg-mainLight w-full px-4 py-4 flex flex-col">
+        <article class="overflow-hidden flex flex-col items-center">
+            <img class="block w-11/12 h-96 object-cover shadow-md" src="/<%=productos.imagen%>" alt="">
+            <header class="w-full flex flex-col justify-start items-center">
+                <span class="text-textLight text-2xl font-normal w-11/12 mt-8 mb-2">
+                    <%=productos.nombre %>
+                </span>
+                <span class="text-textLight text-2xl font-normal w-11/12">                   
+                    $<%=productos.precio %>
+                </span>
+            </header>
+            <footer class=" w-11/12 my-6">
+                <form action="../../carrito/add-to-cart" method="post">
+                    <input type="hidden" name="id" value="<%=productos.id%>">
+                    <input type="hidden" name="nombre" value="<%=productos.nombre%>">
+                    <input type="hidden" name="precio" value="<%=productos.precio%>">
+                    <input type="hidden" name="categoria" value="<%=productos.categoria%>">
+                    <input type="hidden" name="cantidad" value="1">
+                    <input type="hidden" name="imagen" value="<%=productos.imagen%>">
+                    <button type="submit" name="addtocart" id="addtocart" class="rounded-lg p-2.5 bg-marronDark text-mainLight w-full focus:bg-marronBg hover:bg-marronBg cursor-pointer">
+                        Añadir al carrito
+                    </button>
+                </form>
+                <br>
+                <span class="text-sm h-8">
+                    Categoría: <a href="/productos/<%= productos.categoria %> "><%= productos.categoria %></a> 
+                </span>
+            </footer>
+            <section class="w-11/12 flex flex-col">
+                <span class="text-xl mt-4">
+                    Descripción del producto
+                </span>
+                <span class="my-6">
+                    <%= productos.descripcionlarga%>
+                </span>
+            </section>
+        </article>
+    </main>
+    <br>
+    <br>
+    <footer class="p-4 w-full bg-mainLight sm:p-6 dark:bg-gray-800">
+        <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+                <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
+                    <img src="../images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16" alt="Bouvier Artesanal Logo">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier Artesanal</span>
+                </a>
+                <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.</span>
+            </div>
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación</h2>
+                    <ul class="text-gray-600 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="/" class="hover:underline">Inicio</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos" class="hover:underline">Productos</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/carrito" class="hover:underline">Carrito</a>
+                        </li>
+                        <li>
+                            <a href="/buscar" class="hover:underline">Buscar</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos</h2>
+                    <ul class="text-gray-600 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="/productos/jabones" class="hover:underline ">Jabones</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos/cremas" class="hover:underline">Cremas</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos/otros" class="hover:underline ">Otros</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos</h2>
+                    <ul class="text-gray-600 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="https://instagram.com/bouvierartesanal" target="_blank" class="hover:underline">Instagram</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="https://wa.me/5491159714867" target="_blank" class="hover:underline">Whatsapp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos los derechos reservados.
+            </span>      
+        </div>
+    </footer>
+</body>
+<script src="../../javascripts/index.js"></script>
+<%- include('../templates/footer') %> 

@@ -1,0 +1,279 @@
+<%- include('../templates/head') %>
+<link rel="stylesheet" href="../stylesheets/output.css">
+<link rel="stylesheet" href="../stylesheets/hamburguer.css">
+</head>
+
+<body class="bg-bgLight">
+    <header class="w-full h-14 flex sticky top-0 z-50">
+        <div
+            class="sidenav w-0 h-screen bg-mainLight shadow-md fixed z-10 top-0 left-0 overflow-x-hidden pt-6 ease-out duration-300">
+            <ul class="mt-10">
+                <a href="/">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Inicio</li>
+                </a>
+                <a href="/productos">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Productos</li>
+                </a>
+                <a href="/productos/jabones">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Jabones</li>
+                </a>
+                <a href="/productos/cremas">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Cremas</li>
+                </a>
+                <a href="#">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Buscar</li>
+                </a>
+            </ul>
+        </div>
+        <div class="screendarker w-full h-screen bg-[rgba(0,0,0,.8)] absolute hidden ease-linear duration-300">
+
+        </div>
+        <div class="w-full h-full bg-mainLight shadow-md flex fix z-40">
+            <div class="flex justify-between items-center w-full">
+                <div class="hamburguerbtn">
+                    <button class="hamburger hamburger--spin z-40" type="button">
+                        <span class="hamburger-box z-40">
+                            <span class="hamburger-inner text-textLight z-40"></span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="logo">
+                    <img src="../../images/logos/bouvier-logo-lightversion.png" alt="Bouvier Artesanal" width="50">
+
+                </div>
+
+
+                <div class="icons">
+                    <button class="mx-8" type="button">
+                        <span>
+                            <a href="/carrito">
+                                <i class="fa-solid fa-bag-shopping text-xl text-marronBg "></i>
+                            </a>
+                        </span>
+                    </button>
+
+                    <button class="mr-6" type="button">
+                        <a href="/buscar">
+                            <i class="fa-solid fa-magnifying-glass text-textLight"></i>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="w-full flex justify-center my-6">
+        <h1 class="text-textLight font-medium text-2xl">Carrito</h1>
+    </div>
+    <div class="w-full items-center px-6">
+        <% if(cart){ %>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left ">
+                <thead class="bg-marronBg text-xs text-textLight uppercase">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Producto
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Precio
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Cantidad
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Categoria
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Editar
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Eliminar
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="uppercase">
+                    <% cart.forEach(function(item){ %>
+                    <tr class="bg-mainLight border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <%=item.nombre %>
+                        </th>
+                        <td class="px-6 py-4">
+                            $<%=item.precio * item.cantidad%>
+                        </td>
+                        <td class="px-6 py-4">
+                            <%=item.cantidad %>
+                        </td>
+                        <td class="px-6 py-4">
+                            <%= item.categoria %>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="#" class="font-medium">
+                                <form method="post" action="carrito/editar-cantidad"
+                                    class="no-underline flex flex-col items-center justify-center">
+                                    <input type="hidden" value="<%= item.id %>" name="id">
+                                    <input type="submit" value="-" class="no-underline cursor-pointer "
+                                        name="decrease_product_quantity">
+                                    <span class="my-[.15em]"><%= item.cantidad %></span>
+                                    <input type="submit" value="+" class="no-underline cursor-pointer "
+                                        name="increase_product_quantity">
+                                </form>
+                            </a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="#" class="font-medium hover:underline">
+                                <form method="post" action="carrito/eliminar-producto">
+                                    <input type="hidden" name="id" value="<%=item.id%>">
+
+                                    <input type="submit" name="remove-btn" value="Eliminar"
+                                        class="mb-2 p-2 rounded-2xl border-solid border-[1px] border-red text-red cursor-pointer hover:bg-red hover:text-redlight">
+                                </form>
+                            </a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="w-full flex md:flex-row items-center justify-center my-6 sm:flex-col">
+        <span class="bg-mainLight shadow-md rounded-lg p-6 text-textLight">
+            Total: $ <%= total %>
+        </span>
+        <form action="carrito/checkout" method="get" class="sm:my-4">
+            <button type="submit"
+                class="bg-green mx-4 p-6 shadow-md rounded-lg hover:bg-greenLight text-mainLight">Confirmar
+                pedido</button>
+        </form>
+    </div>
+    <%} else{ %>
+    <!-- <div class="flex flex-col w-full  items-center">   -->
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="bg-marronBg text-xs text-textLight uppercase">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Producto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Precio
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Cantidad
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Categoria
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Editar
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Eliminar
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-mainLight border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                        No agregaste ningún producto al carrito.
+                    </th>
+                    <td class="px-6 py-4">
+
+                    </td>
+                    <td class="px-6 py-4">
+
+                    </td>
+                    <td class="px-6 py-4">
+
+                    </td>
+                    <td class="px-6 py-4">
+
+                    </td>
+                    <td class="px-6 py-4">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="my-8 w-max mx-auto">
+        <img src="images/vectores/undraw_empty_cart_co35.svg" width="210px" alt="">
+    </div>
+    <!-- </div> -->
+    <% } %>
+    </div>
+    <br>
+    <br>
+    <footer class="p-4 w-full bg-mainLight sm:p-6 dark:bg-gray-800">
+        <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+                <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
+                    <img src="../images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16" alt="Bouvier Artesanal Logo">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier Artesanal</span>
+                </a>
+                <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.</span>
+            </div>
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación</h2>
+                    <ul class="text-gray-600 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="/" class="hover:underline">Inicio</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos" class="hover:underline">Productos</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/carrito" class="hover:underline">Carrito</a>
+                        </li>
+                        <li>
+                            <a href="/buscar" class="hover:underline">Buscar</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos</h2>
+                    <ul class="text-gray-600 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="/productos/jabones" class="hover:underline ">Jabones</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos/cremas" class="hover:underline">Cremas</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="/productos/otros" class="hover:underline ">Otros</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos</h2>
+                    <ul class="text-gray-600 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="https://instagram.com/bouvierartesanal" target="_blank" class="hover:underline">Instagram</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="https://wa.me/5491159714867" target="_blank" class="hover:underline">Whatsapp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos los derechos reservados.
+            </span>      
+        </div>
+    </footer>
+
+
+</body>
+<script src="../javascripts/index.js"></script>
+<%- include('../templates/footer') %>

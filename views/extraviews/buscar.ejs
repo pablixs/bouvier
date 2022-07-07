@@ -1,0 +1,154 @@
+<%- include('../templates/head') %> 
+<link rel="stylesheet" href="../stylesheets/output.css">
+<script src="https://unpkg.com/scrollreveal"></script>
+<link rel="stylesheet" href="../stylesheets/hamburguer.css">
+</head>
+<body class="bg-bgLight">
+    <header class="w-full h-14 flex sticky top-0 z-50">
+        <div
+            class="sidenav w-0 h-screen bg-mainLight shadow-md fixed z-10 top-0 left-0 overflow-x-hidden pt-6 ease-out duration-300">
+            <ul class="mt-10">
+                <a href="/">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Inicio</li>
+                </a>
+                <a href="/productos">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Productos</li>
+                </a>
+                <a href="/productos/jabones">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Jabones</li>
+                </a>
+                <a href="/productos/cremas">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Cremas</li>
+                </a>
+                <a href="#">
+                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                        Buscar</li>
+                </a>
+            </ul>
+        </div>
+        <div class="screendarker w-full h-screen bg-[rgba(0,0,0,.8)] absolute hidden ease-linear duration-300">
+
+        </div>
+        <div class="w-full h-full bg-mainLight shadow-md flex fix z-40">
+            <div class="flex justify-between items-center w-full">
+                <div class="hamburguerbtn">
+                    <button class="hamburger hamburger--spin z-40" type="button">
+                        <span class="hamburger-box z-40">
+                            <span class="hamburger-inner text-textLight z-40"></span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="logo">
+                    <img src="../../images/logos/bouvier-logo-lightversion.png" alt="Bouvier Artesanal" width="50">
+
+                </div>
+
+
+                <div class="icons">
+                    <button class="mx-8" type="button">
+                        <span>
+                            <a href="/carrito">
+                                <i class="fa-solid fa-bag-shopping text-xl text-marronBg "></i>
+                            </a>
+                        </span>
+                    </button>
+
+                    <button class="mr-6" type="button">
+                        <a href="/buscar">
+                            <i class="fa-solid fa-magnifying-glass text-textLight"></i>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="w-full flex items-center justify-center p-4 h-full my-20">
+        <div class="w-5/6 flex flex-col items-center justify-center bg-mainLight rounded-lg shadow-md p-4">
+            <form class="w-full lg:w-4/6" method="post" action="/buscar-consulta">   
+                <label for="default-search" class="mb-2 text-sm font-medium text-marronBg sr-only">Buscar</label>
+                <div class="relative">
+                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg class="w-5 h-5 text-marronBg dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <input type="text" name="query" id="default-search" class="block p-4 pl-10 w-full text-sm text-textLightb bg-mainLight rounded-lg border border-marronBg focus:ring-marronBg focus:border-marronBg" required="">
+                    <button type="submit" class="text-mainLight absolute right-2.5 bottom-2.5 bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-marronBg font-medium rounded-lg text-xs px-2 py-2">Buscar</button>
+                </div>
+            </form>
+            <img src="images/vectores/undraw_web_search_re_efla.svg" alt="A woman searching vector" class="p-4 lg:p-0 my-6" width="320px" srcset="">
+        </div>
+    </main>
+    <footer class="p-4 w-full bg-mainLight sm:p-6 relative bottom-0 z-0">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
+                        <img src="../images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16" alt="Bouvier Artesanal Logo">
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier Artesanal</span>
+                    </a>
+                    <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.</span>
+                </div>
+                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación</h2>
+                        <ul class="text-gray-600 dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="/" class="hover:underline">Inicio</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos" class="hover:underline">Productos</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/carrito" class="hover:underline">Carrito</a>
+                            </li>
+                            <li>
+                                <a href="/buscar" class="hover:underline">Buscar</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos</h2>
+                        <ul class="text-gray-600 dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="/productos/jabones" class="hover:underline ">Jabones</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos/cremas" class="hover:underline">Cremas</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos/otros" class="hover:underline ">Otros</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos</h2>
+                        <ul class="text-gray-600 dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="https://instagram.com/bouvierartesanal" target="_blank" class="hover:underline">Instagram</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="https://wa.me/5491159714867" target="_blank" class="hover:underline">Whatsapp</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos los derechos reservados.
+                </span>      
+            </div>
+    </footer>
+</body>
+<script src="../javascripts/index.js"></script>
+<script>
+    ScrollReveal().reveal('.carditem',{ delay:100 , interval: 350});
+</script>
+<%- include('../templates/footer') %> 

@@ -1,6 +1,5 @@
 var con = require('../config/dbconnection')
 var Productos = require('../models/Productos')
-var borrar = require('fs')
 
 module.exports ={
     index:(req,res)=>{

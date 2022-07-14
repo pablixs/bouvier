@@ -1,0 +1,415 @@
+<%- include('../templates/head') %>
+<link rel="stylesheet" href="/stylesheets/output.css">
+<link rel="stylesheet" href="/stylesheets/hamburguer.css">
+</head>
+
+<body class="bg-bgLight">
+    <body class="bg-mainLight">
+        <%- include('../templates/admin/nav') %> 
+        <div class="flex overflow-hidden pt-16 bg-mainLight"> 
+            <aside class="bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex flex-shrink-0 flex-col" aria-label="Sidebar">
+                <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="/admin" class="flex items-center p-2 text-base font-normal rounded-lg  hover:text-bgLight hover:bg-marronBg ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                              </svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Inicio</span>
+                            <!-- <span class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span> -->
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/crear" class="flex items-center p-2 text-base font-normal rounded-lg  hover:text-bgLight hover:bg-marronBg ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Añadir producto</span>
+                            <!-- <span class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span> -->
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/productos" class="flex items-center p-2 text-base font-normal rounded-lg hover:text-bgLight hover:bg-marronBg ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                              </svg>
+                            <span class="ml-3">Productos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/pedidos" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg text-bgLight bg-marronBg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                              </svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Pedidos</span>
+                            <!-- <span class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span> -->
+                        </a>
+                    </li>               
+                    <!-- <li>
+                        <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+                        </a>
+                    </li> -->
+                </ul>
+                </div>
+            </aside>
+        </div>
+        <div class="main-content bg-mainLight ml-64 h-full w-full relative overflow-y-auto">
+            <main>
+                <div class="p-4 flex flex-col justify-between">
+                    <nav class="flex mb-4" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                          <li class="inline-flex items-center">
+                            <a href="/admin" class="inline-flex items-center text-lg font-normal text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                              <svg class="mr-2 w-7 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                              Inicio
+                            </a>
+                          </li>
+                          <li aria-current="page">
+                            <div class="flex items-center">
+                              <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                              <span class="ml-1 text-lg font-normal text-gray-500 md:ml-2 dark:text-gray-400">Pedidos</span>
+                            </div>
+                          </li>
+                        </ol>
+                    </nav>
+                    <div>
+                        <span class="text-2xl font-medium">Todos los pedidos</span>
+                    </div>
+                    <div class="flex justify-between items-center my-4">                       
+                        <form class="w-full">   
+                            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
+                            <div class="relative w-4/6">
+                                
+                                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                </div>
+                                <input type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                                <button type="submit" class="text-bgLight absolute right-10 bottom-2.5 bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                            </div>
+                        </form>
+                        <div class="flex w-48">
+                            <a href="/admin/crear" class="p-2 py-3 bg-marronBg text-bgLight text-sm rounded-xl">
+                                <i class="fa-solid fa-plus mr-4"></i> Agregar producto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="overflow-x-auto">
+                        <div class="align-middle inline-block min-w-full">
+                            <div class="w-full flex items-center justify-center overflow-hidden">
+                                <div class="w-full">    
+                                    <div class="relative overflow-x-auto shadow-md">
+                                        <table class="relative w-full bg-mainLight text-lg text-left text-textLight">
+                                            <thead class="text-sm text-textDarker uppercase bg-bgdarkerLight">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Estado
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Pedido N°
+                                                    </th>
+                                                    <th scope="col" class="px-16 py-3 font-medium">
+                                                        Productos
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Costo
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Tipo de envío
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Código de pedido
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Nombre
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Email
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Provincia
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Ciudad
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Dirección
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Número
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Piso
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Teléfono
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Fecha
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        <span class="sr-only">Eliminar</span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% for (let dato = 0; dato < datos.length; dato++) {%> 
+                                                    <% if (datos[dato].estado === "Cancelado") {%> 
+                                                        <tr class="bg-mainLight border-solid text-sm border-1 border-b border-[rgba(99,99,99,.2)]">
+                                                            <th scope="row" class="px-6 py-4 font-medium bg-red-200 text-marronDark dark:text-white whitespace-nowrap">
+                                                                <form method="post" class="flex flex-col gap-2" action="/admin/pedidos">
+                                                                    <input type="hidden" name="id" value="<%= datos[dato].id %>">
+                                                                    <label for="estado" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">&nbsp;</label>
+                                                                    <select id="estado" name="estado" class="bg-red-300 border border-red-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <% if(datos[dato].estado === "No pagado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="Pagado">Pagado</option>
+                                                                        <option value="Cancelado">Cancelado</option>
+                                                                    <% } else if(datos[dato].estado === "Pagado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="No pagado">No pagado</option>
+                                                                        <option value="Cancelado">Cancelado</option>    
+                                                                    <% } else if(datos[dato].estado === "Cancelado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="Pagado">Pagado</option>
+                                                                        <option value="No pagado">No pagado</option>
+                                                                    <% } %>     
+                                                                    </select>
+                                                                    <button type="submit" class="bg-red-500 text-mainLight rounded-lg p-1 px-2 w-max mx-auto"><i class="fa-solid fa-floppy-disk"></i></button>
+                                                                </form>
+                                                            </th>
+                                                            <th scope="row" class="px-6 py-4 font-bold text-marronDark whitespace-nowrap">
+                                                                <%= datos[dato].id %> 
+                                                            </th>
+                                                            <td class="px-6 py-4">
+                                                                <%= datos[dato].productos %> 
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                $<%= datos[dato].costo %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].envio %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].codigo %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].nombre %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].email %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].provincia %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].ciudad %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].direccion %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].numero %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].piso %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].telefono %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].fecha %> 
+                                                            </td>
+                                                            <td class="px-4 py-4 text-center">
+                                                                <form action="/admin/pedidos/eliminar" method="post">
+                                                                    <input type="hidden" name="id" value="<%= datos[dato].id %>">
+                                                                    <button class="font-medium p-2 rounded-xl bg-redlight text-red-600 hover:bg-red-600 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    <% } else if (datos[dato].estado === "Pagado") { %> 
+                                                        <tr class="bg-mainLight text-sm border-solid border-1 border-b border-[rgba(99,99,99,.2)]">
+                                                            <th scope="row" class="px-6 bg-green-200 py-4 font-medium text-marronDark dark:text-white whitespace-nowrap">
+                                                                <form method="post" class="flex flex-col gap-2" action="/admin/pedidos">
+                                                                    <input type="hidden" name="id" value="<%= datos[dato].id %>">
+                                                                    <label for="estado" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">&nbsp;</label>
+                                                                    <select id="estado" name="estado" class="bg-green-300 border-green-400 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <% if(datos[dato].estado === "No pagado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="Pagado">Pagado</option>
+                                                                        <option value="Cancelado">Cancelado</option>
+                                                                    <% } else if(datos[dato].estado === "Pagado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="No pagado">No pagado</option>
+                                                                        <option value="Cancelado">Cancelado</option>    
+                                                                    <% } else if(datos[dato].estado === "Cancelado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="Pagado">Pagado</option>
+                                                                        <option value="No pagado">No pagado</option>
+                                                                    <% } %>     
+                                                                    </select>
+                                                                    <button type="submit" class="bg-green-500 text-mainLight rounded-lg p-1 px-2 w-max mx-auto"><i class="fa-solid fa-floppy-disk"></i></button>
+                                                                </form>
+                                                            </th>
+                                                            <th scope="row" class="px-6 py-4 font-bold text-marronDark dark:text-white whitespace-nowrap">
+                                                                <%= datos[dato].id %> 
+                                                            </th>
+                                                            <td class="px-6 py-4">
+                                                                <%= datos[dato].productos %> 
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                $<%= datos[dato].costo %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].envio %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].codigo %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].nombre %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].email %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].provincia %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].ciudad %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].direccion %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].numero %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].piso %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].telefono %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].fecha %> 
+                                                            </td>
+                                                            <td class="px-4 py-4 text-center">
+                                                                <form action="/admin/eliminar/<%= datos[dato].id %> " method="post">
+                                                                    <button class="font-medium p-2 rounded-xl bg-red-400 text-red-200 hover:bg-red-700 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    <% } else if(datos[dato].estado === "No pagado") { %> 
+                                                        <tr class="bg-mainLight text-sm border-solid border-1 border-b border-[rgba(99,99,99,.2)]">
+                                                            <th scope="row" class="px-6 py-4 bg-blue-200 font-medium text-marronDark">
+                                                                <form method="post" class="flex flex-col gap-2" action="/admin/pedidos">
+                                                                    <input type="hidden" name="id" value="<%= datos[dato].id %>">
+                                                                    <label for="estado" class="block mb-2 px-14 text-sm font-medium text-gray-900 dark:text-gray-400"></label>
+                                                                    <select id="estado" name="estado" class="bg-blue-400 border-blue-500 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <% if(datos[dato].estado === "No pagado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="Pagado">Pagado</option>
+                                                                        <option value="Cancelado">Cancelado</option>
+                                                                    <% } else if(datos[dato].estado === "Pagado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="No pagado">No pagado</option>
+                                                                        <option value="Cancelado">Cancelado</option>    
+                                                                    <% } else if(datos[dato].estado === "Cancelado") { %> 
+                                                                        <option value="<%= datos[dato].estado%>" selected=""><%= datos[dato].estado %></option>
+                                                                        <option value="Pagado">Pagado</option>
+                                                                        <option value="No pagado">No pagado</option>
+                                                                    <% } %>     
+                                                                    </select>
+                                                                    <button type="submit" class="text-mainLight bg-blue-500 rounded-lg p-1 px-2 w-max mx-auto"><i class="fa-solid fa-floppy-disk"></i></button>
+                                                                </form>
+                                                            </th>
+                                                            <th scope="row" class="px-6 py-4 font-bold text-marronDark">
+                                                                <%= datos[dato].id %> 
+                                                            </th>
+                                                            <td class="px-6 py-4">
+                                                                <%= datos[dato].productos %> 
+                                                            </td>
+                                                            <td class="px-6 py-4">
+                                                                $<%= datos[dato].costo %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].envio %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].codigo %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].nombre %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].email %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].provincia %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].ciudad %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].direccion %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].numero %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].piso %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].telefono %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].fecha %> 
+                                                            </td>
+                                                            <td class="px-4 py-4 text-center">
+                                                                <form action="/admin/eliminar/<%= datos[dato].id %> " method="post">
+                                                                    <button class="font-medium p-2 rounded-xl bg-red-500 hover:bg-red-700 text-redlight shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    <% } %> 
+                                                <% } %> 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+
+
+
+
+</body>
+<script src="/javascripts/index.js"></script>
+<script src="/javascripts/admin.js"></script>
+<%- include('../templates/footer') %>

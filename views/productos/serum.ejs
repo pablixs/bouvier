@@ -3,10 +3,9 @@
         <div class="container my-12 mx-auto px-4 md:px-12">
             <div class="flex flex-wrap -mx-1 lg:-mx-4">
             <% for(let producto = 0; producto < productos.length; producto++) { %> 
-                <!-- <li class="text-red-500"><%=productos[producto].descripcioncorta %></li> -->
                     <div class="my-[1.25rem] px-1 w-full md:w-2/2 lg:my-4 lg:px-4 lg:w-1/3 carditem">
                         <article class="overflow-hidden rounded-lg shadow-lg bg-mainLight">
-                            <img alt="Placeholder" class="block h-[220px] w-full object-cover" src="/<%=productos[producto].imagen%>">
+                            <img alt="Placeholder" class="block h-[220px] w-full object-cover" src="/images/productos/subidosporweb/<%=productos[producto].imagen%>">
                             <header class="flex items-center justify-between leading-tight p-2 md:p-4">
                                 <!-- <span class="text-lg">
                                     

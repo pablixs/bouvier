@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const crudController = require('../controllers/crudController');
+const adminController = require('../controllers/adminController')
+const authPermissions = require("../middlewares/authPermissions")
 var multer = require('multer');
 var fecha = Date.now();
 
@@ -22,8 +24,17 @@ var cargar = multer({
     storage: rutaAlmacen
 })
 
+router.get('/login',crudController.login)
+router.post('/login/try',adminController.login)
+
+router.use(authPermissions({
+    authRequired:true,
+    exclude:["/admin/login"]
+}))
 
 router.get('/', crudController.index);
+
+
 
 router.get('/productos', crudController.productosAdmin)
 

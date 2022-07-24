@@ -1,7 +1,7 @@
 <%- include('../templates/head') %> 
-<link rel="stylesheet" href="../stylesheets/output.css">
+<link rel="stylesheet" href="/stylesheets/output.css">
 <script src="https://unpkg.com/scrollreveal"></script>
-<link rel="stylesheet" href="../stylesheets/hamburguer.css">
+<link rel="stylesheet" href="/stylesheets/hamburguer.css">
 </head>
 <body class="bg-bgLight">
     <header class="w-full h-14 flex sticky top-0 z-50">
@@ -24,7 +24,7 @@
                     <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
                         Cremas</li>
                 </a>
-                <a href="#">
+                <a href="/buscar">
                     <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
                         Buscar</li>
                 </a>
@@ -49,11 +49,13 @@
                 </div>
 
 
-                <div class="icons">
+                <div class="icons flex items-center">
                     <button class="mx-8" type="button">
                         <span>
                             <a href="/carrito">
-                                <i class="fa-solid fa-bag-shopping text-xl text-marronBg "></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                </svg>
                             </a>
                         </span>
                     </button>
@@ -80,7 +82,7 @@
                     <button type="submit" class="text-mainLight absolute right-2.5 bottom-2.5 bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-marronBg font-medium rounded-lg text-xs px-2 py-2">Buscar</button>
                 </div>
             </form>
-            <img src="images/vectores/undraw_web_search_re_efla.svg" alt="A woman searching vector" class="p-4 lg:p-0 my-6" width="320px" srcset="">
+            <img src="/images/vectores/undraw_web_search_re_efla.svg" alt="A woman searching vector" class="p-4 lg:p-0 my-6" width="320px" srcset="">
         </div>
     </main>
     <footer class="p-4 w-full bg-mainLight sm:p-6 relative bottom-0 z-0">
@@ -147,7 +149,7 @@
             </div>
     </footer>
 </body>
-<script src="../javascripts/index.js"></script>
+<script src="/javascripts/index.js"></script>
 <script>
     ScrollReveal().reveal('.carditem',{ delay:100 , interval: 350});
 </script>

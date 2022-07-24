@@ -4,12 +4,16 @@ var Productos = require('../models/Productos')
 var borrar = require('fs')
 
 
-
 module.exports = {
     index: (req, res) => {
-        res.render('admin/index', {
-            title: 'Administrador - Bouvier Artesanal'
-        })
+        // if(req.session.admin.loggedIn === true){
+            res.render('admin/index', {
+                title: 'Administrador - Bouvier Artesanal'
+            })     
+        // } else if(req.session.admin === undefined || req.session.loggedIn === false){
+        //     res.redirect('/admin/login')
+        // }
+        
     },
     crear: (req, res) => {
         res.render('admin/crear', {
@@ -54,9 +58,14 @@ module.exports = {
         res.redirect('/admin/productos')
     },
     productosAdmin: (req,res)=>{
-        Productos.obtener(con,(err,datos)=>{
-            res.render('admin/productos',{title:'Administrador: Productos - Bouvier Artesanal', datos:datos })
-        })
+        // if(req.session.admin.loggedIn === true){
+            Productos.obtener(con,(err,datos)=>{
+                res.render('admin/productos',{title:'Administrador: Productos - Bouvier Artesanal', datos:datos })
+            })
+        // } else {
+        //    res.redirect('/admin/login') 
+        // }
+        
     },
     eliminar: (req,res)=>{
         Crud.retornarDatosID(con,req.params.id,function(er,registros){
@@ -88,4 +97,8 @@ module.exports = {
             res.redirect('/admin/pedidos')
         })
     },
+    login: (req,res)=>{
+        res.render('admin/login',{title:'Iniciar sesión',error:""})
+    },
+    
 }

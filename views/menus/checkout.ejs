@@ -1,404 +1,488 @@
 <%- include('../templates/head') %>
-<link rel="stylesheet" href="../stylesheets/output.css">
-<link rel="stylesheet" href="../stylesheets/hamburguer.css">
-</head>
+    <link rel="stylesheet" href="../stylesheets/output.css">
+    <link rel="stylesheet" href="../stylesheets/hamburguer.css">
+    </head>
 
-<body class="bg-bgLight">
-    <header class="w-full h-14 flex sticky top-0 z-50">
-        <div
-            class="sidenav w-0 h-screen bg-mainLight shadow-md fixed z-10 top-0 left-0 overflow-x-hidden pt-6 ease-out duration-300">
-            <ul class="mt-10">
-                <a href="/">
-                    <li class="my-4 ml-2 w-max text-md hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Inicio</li>
-                </a>
-                <a href="/productos">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Productos</li>
-                </a>
-                <a href="/productos/jabones">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Jabones</li>
-                </a>
-                <a href="/productos/cremas">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Cremas</li>
-                </a>
-                <a href="#">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Buscar</li>
-                </a>
-            </ul>
-        </div>
-        <div class="screendarker w-full h-screen bg-[rgba(0,0,0,.8)] absolute hidden ease-linear duration-300">
-
-        </div>
-        <div class="w-full h-full bg-mainLight shadow-md flex fix z-40">
-            <div class="flex justify-between items-center w-full">
-                <div class="hamburguerbtn">
-                    <button class="hamburger hamburger--spin z-40" type="button">
-                        <span class="hamburger-box z-40">
-                            <span class="hamburger-inner text-textLight z-40"></span>
-                        </span>
-                    </button>
-                </div>
-
-                <div class="logo">
-                    <img src="../../images/logos/bouvier-logo-lightversion.png" alt="Bouvier Artesanal" width="50">
-
-                </div>
-
-
-                <div class="icons">
-                    <button class="mx-8" type="button">
-                        <span>
-                            <a href="/carrito">
-                                <i class="fa-solid fa-bag-shopping text-lg text-marronBg "></i>
-                            </a>
-                        </span>
-                    </button>
-
-                    <button class="mr-6" type="button">
-                        <span>
-                            <i class="fa-solid fa-magnifying-glass text-textLight"></i>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="w-full flex flex-col items-center justify-center">
-        <div class="actions my-2">
-            <div class="enviocorreo my-6 flex flex-col justify-between items-center w-60 h-60 bg-marronLight rounded-3xl p-4 shadow-md hover:scale-110 ease-out duration-300 cursor-pointer">
-                <img src="../images/vectores/undraw_deliveries_2r4y.svg" class="w-full " alt="" srcset="">
-                <span class="font-semibold text-center">Envío a domicilio(correo argentino)</span>
-            </div>
-            <div class="envioparticular my-6 flex flex-col justify-between items-center w-60 h-60 bg-marronLight rounded-3xl p-4 shadow-md hover:scale-110 ease-out duration-300 cursor-pointer">
-                <img src="../images/vectores/undraw_delivery_truck_vt6p.svg" class="w-full " alt="" srcset="">
-                <span class="font-semibold text-center">Envío particular</span>
-            </div>
-            <div class="retiro my-6 flex flex-col justify-between items-center w-60 h-60 bg-marronLight rounded-3xl p-4 shadow-md hover:scale-110 ease-out duration-300 cursor-pointer">
-                <img src="../images/vectores/undraw_destination_re_sr74.svg" class="w-full " alt="" srcset="">
-                <span class="font-semibold text-sm text-center">Retiro en domicilio(Berazategui/Gutierrez)</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="enviocorreodata hidden w-full flex justify-center items-center">
-        <div class="w-5/6">
-            <div class="p-4 bg-mainLight shadow-md rounded-lg">
-                <h3 class="text-center font-semibold my-2">
-                    ¿Cómo funcionan los envíos por correo argentino?
-                </h3>
-                <p>
-                    Los envíos que no puedan hacerse por medio particular se realizaran por correo argentino hacia todo el país, su costo dependera de la zona y el peso del paquete.
-                    <br><i class="text-red">* El costo de envío no esta contemplado en el precio final del pedido</i>
-                </p>
-            </div>
-            <div class="w-full flex justify-center my-8">
-                <div class="bg-mainLight rounded-xl shadow-sm px-6 py-4">
-                    <form action="checkout/place_order" method="post">
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="name" id="checkout-name"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder="" required="">
-                                <label for="name"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="email" name="email" id="checkout-email"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="email"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phone" id="checkout-phone"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="phone"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="provincia" id="checkout-provincia"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="provincia"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Provincia</label>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="city" id="checkout-city"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="city"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ciudad</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="address" id="checkout-address"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="checkout-address"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Dirección</label>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="numero" id="checkout-numero"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="numero"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Numero</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="piso" id="checkout-piso"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="piso"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Piso</label>
-                            </div>
-                        </div>
-                        <input type="hidden" name="envio" value="Correo argentino" id="checkout-correo-argentino">
-                        <button type="submit" id="checkout-btn" name="checkout-btn"
-                            class="text-textLight bg-green hover:bg-greenLight focus:ring-4 focus:outline-none focus:ring-green font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">Finalizar pedido</button>
-                    </form>
-                </div>
-        
-            </div>  
-        </div>    
-    </div>
-    
-    
-    <div class="envioparticulardata hidden w-full flex justify-center items-center">
-        <div class="w-5/6">
-            <div class="p-4 bg-mainLight shadow-md rounded-lg">
-                <h3 class="text-center font-semibold my-2">
-                    ¿Cómo funciona el envío particular?
-                </h3>
-                <p>
-                    El envío particular tiene un día a la semana específico en el que reparte por diferentes zonas. Cada zona tiene un precio establecido, si tu zona no aparece en la lista tendrás que elegir correo argentino como opción.
-                    <br><i class="text-red">* El costo de envío no esta contemplado en el precio final del pedido</i>
-                </p>
-                <br>
-                <ul>
-                    <li>Zona 1: Gutierrez - <span class="text-greenLight">Costo $0 (gratis)</span></li><br>
-                    <li>Zona 2: Ingeniero J. Allan, Berazategui(centro), La carolina 2 - <span class="text-greenLight">Costo $100</span></li><br>
-                    <li>Zona 3: El pato, Bosques, Marítimo/hudson, Sourigues, Ranelagh, Plátanos, Villa españa - <span class="text-greenLight">Costo $150</span></li><br>
-                    <li>Zona 4: Florencio Varela(centro), Villa Elisa, Quilmes - <span class="text-greenLight">Costo $200</span></li>
+    <body class="bg-bgLight w-full flex flex-col items-center">
+        <header class="w-full h-14 flex sticky top-0 z-50">
+            <div
+                class="sidenav w-0 h-screen bg-mainLight shadow-md fixed z-10 top-0 left-0 overflow-x-hidden pt-6 ease-out duration-300">
+                <ul class="mt-10">
+                    <a href="/">
+                        <li
+                            class="my-4 ml-2 w-max text-md hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                            Inicio</li>
+                    </a>
+                    <a href="/productos">
+                        <li
+                            class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                            Productos</li>
+                    </a>
+                    <a href="/productos/jabones">
+                        <li
+                            class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                            Jabones</li>
+                    </a>
+                    <a href="/productos/cremas">
+                        <li
+                            class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                            Cremas</li>
+                    </a>
+                    <a href="#">
+                        <li
+                            class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
+                            Buscar</li>
+                    </a>
                 </ul>
             </div>
-            <div class="w-full flex justify-center my-8">
-                <div class="bg-mainLight rounded-xl shadow-sm px-6 py-4">
-                    <form action="checkout/place_order" method="post">
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="name" id="checkout-name"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="name"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="email" name="email" id="checkout-email"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="email"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phone" id="checkout-phone"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="phone"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="provincia" id="checkout-provincia"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="provincia"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Localidad</label>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="address" id="checkout-address"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="address"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Dirección</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="numero" id="checkout-numero"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required="">
-                            <label for="numero"
-                                class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Numero</label>                          
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="hidden" name="city" id="checkout-city"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    value="No aplica">
+            <div class="screendarker w-full h-screen bg-[rgba(0,0,0,.8)] absolute hidden ease-linear duration-300">
+
+            </div>
+            <div class="w-full h-full bg-mainLight shadow-md flex fix z-40">
+                <div class="flex justify-between items-center w-full">
+                    <div class="hamburguerbtn">
+                        <button class="hamburger hamburger--spin z-40" type="button">
+                            <span class="hamburger-box z-40">
+                                <span class="hamburger-inner text-textLight z-40"></span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="logo">
+                        <img src="../../images/logos/bouvier-logo-lightversion.png" alt="Bouvier Artesanal"
+                            width="50">
+
+                    </div>
+
+
+                    <div class="icons">
+                        <button class="mx-8" type="button">
+                            <span>
+                                <a href="/carrito">
+                                    <i class="fa-solid fa-bag-shopping text-lg text-marronBg "></i>
+                                </a>
+                            </span>
+                        </button>
+
+                        <button class="mr-6" type="button">
+                            <span>
+                                <i class="fa-solid fa-magnifying-glass text-textLight"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="lg:w-5/6 w-full bg-mainLight lg:p-4 lg:px-4 lg:my-8 sm:p-0 sm:m-0 rounded-xl">
+            <h1 class="text-center text-2xl my-4">Elegí el tipo de envío</h1>
+            <div class="w-full flex flex-col md:p-4 md:flex-shrink-0 lg:flex-row items-center justify-center">
+                <div class="actions my-2 md:p-6 lg:flex lg:flex-shrink">
+                    <div
+                        class="enviocorreo my-6 md:mx-4 flex flex-col justify-between items-center w-60 h-60 bg-white rounded-3xl p-4 shadow-md hover:scale-110 ease-out duration-300 cursor-pointer">
+                        <img src="../images/vectores/undraw_deliveries_2r4y.svg" class="w-full " alt="" srcset="">
+                        <span class="font-semibold text-center">Envío a domicilio(correo argentino)</span>
+                    </div>
+                    <div
+                        class="envioparticular my-6 md:mx-4 flex flex-col justify-between items-center w-60 h-60 bg-white rounded-3xl p-4 shadow-md hover:scale-110 ease-out duration-300 cursor-pointer">
+                        <img src="../images/vectores/undraw_delivery_truck_vt6p.svg" class="w-full " alt="" srcset="">
+                        <span class="font-semibold text-center">Envío particular</span>
+                    </div>
+                    <div
+                        class="retiro my-6 md:mx-4 flex flex-col justify-between items-center w-60 h-60 bg-white rounded-3xl p-4 shadow-md hover:scale-110 ease-out duration-300 cursor-pointer">
+                        <img src="../images/vectores/undraw_destination_re_sr74.svg" class="w-full " alt="" srcset="">
+                        <span class="font-semibold text-sm text-center">Retiro en
+                            domicilio(Berazategui/Gutierrez)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="enviocorreodata hidden w-full flex justify-center items-center">
+                <div class="w-5/6">
+                    <div class="p-4 bg-mainLight shadow-lg rounded-lg">
+                        <h3 class="text-center font-semibold my-2">
+                            ¿Cómo funcionan los envíos por correo argentino?
+                        </h3>
+                        <p>
+                            Los envíos que no puedan hacerse por medio particular se realizaran por correo argentino
+                            hacia
+                            todo el país, su costo dependera de la zona y el peso del paquete.
+                            <br><i class="text-red">* El costo de envío no esta contemplado en el precio final del
+                                pedido</i>
+                        </p>
+                    </div>
+                    <div class="w-full flex justify-center my-8">
+                        <div class="bg-mainLight rounded-xl w-full shadow-sm px-6 py-6">
+                            <form action="checkout/place_order" method="post">
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="name" id="checkout-name"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder="" required="">
+                                        <label for="name"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="email" name="email" id="checkout-email"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="email"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                                    </div>
                                 </div>
-                            <div class="relative z-0 w-full mb-6 group">
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="tel" name="phone"
+                                            id="checkout-phone"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="phone"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="provincia" id="checkout-provincia"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="provincia"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Provincia</label>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="city" id="checkout-city"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="city"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ciudad</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="address" id="checkout-address"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="checkout-address"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Dirección</label>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="numero" id="checkout-numero"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="numero"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Numero</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="piso" id="checkout-piso"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            >
+                                        <label for="piso"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Piso</label>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="postal" id="checkout-postal"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="checkout-postal"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Código
+                                            postal</label>
+                                    </div>
+
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <label for="checkout-descripcion"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Descripcíon
+                                            del domicilio</label>
+                                        <textarea id="checkout-descripcion" name="descripcion" rows="4"
+                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-marronBg dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-marronBg"
+                                            placeholder="Casa de dos pisos, portón de madera..."></textarea>
+
+                                    </div>
+                                </div>
+                                <input type="hidden" name="envio" value="Correo argentino"
+                                    id="checkout-correo-argentino">
+                                <button type="submit" id="checkout-btn" name="checkout-btn"
+                                    class="text-mainLight bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-green font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">Finalizar
+                                    pedido</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="envioparticulardata hidden w-full flex justify-center items-center">
+                <div class="w-5/6">
+                    <div class="p-4 bg-mainLight shadow-lg rounded-lg">
+                        <h3 class="text-center font-semibold my-2">
+                            ¿Cómo funciona el envío particular?
+                        </h3>
+                        <p>
+                            El envío particular tiene un día a la semana específico en el que reparte por diferentes
+                            zonas.
+                            Cada zona tiene un precio establecido, si tu zona no aparece en la lista tendrás que elegir
+                            correo argentino como opción.
+                            <br><i class="text-red">* El costo de envío no esta contemplado en el precio final del
+                                pedido</i>
+                        </p>
+                        <br>
+                        <ul>
+                            <li>Zona 1: Gutierrez - <span class="text-greenLight">Costo $0 (gratis)</span></li><br>
+                            <li>Zona 2: Ingeniero J. Allan, Berazategui(centro), La carolina 2 - <span
+                                    class="text-greenLight">Costo $100</span></li><br>
+                            <li>Zona 3: El pato, Bosques, Marítimo/hudson, Sourigues, Ranelagh, Plátanos, Villa españa -
+                                <span class="text-greenLight">Costo $150</span>
+                            </li><br>
+                            <li>Zona 4: Florencio Varela(centro), Villa Elisa, Quilmes - <span
+                                    class="text-greenLight">Costo
+                                    $200</span></li>
+                        </ul>
+                    </div>
+                    <div class="w-full flex justify-center my-8">
+                        <div class="bg-mainLight w-full rounded-xl shadow-sm px-6 py-4">
+                            <form action="checkout/place_order" method="post">
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="name" id="checkout-name"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="name"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="email" name="email" id="checkout-email"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="email"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="tel" name="phone"
+                                            id="checkout-phone"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="phone"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="provincia" id="checkout-provincia"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="provincia"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Localidad</label>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="address" id="checkout-address"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="address"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Dirección</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="numero" id="checkout-numero"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="numero"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Numero</label>
+                                    </div>
+                                </div>
+                                <div class="hidden md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="hidden" name="city" id="checkout-city"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            value="No aplica">
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="hidden" name="piso" id="checkout-piso"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            value="No aplica">
+
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-1 md:gap-6">
+                                    <div class="relative hidden z-0 w-full group">
+                                        <input type="hidden" name="postal" id="checkout-postal"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " value="No aplica" required="">
+                                        <label for="checkout-postal"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Código
+                                            postal</label>
+                                    </div>
+
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <label for="checkout-descripcion"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Descripcíon
+                                            del domicilio</label>
+                                        <textarea id="checkout-descripcion" name="descripcion" rows="4"
+                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-marronBg focus:border-marronBg"
+                                            placeholder="Casa de dos pisos, portón de madera..."></textarea>
+
+                                    </div>
+                                </div>
+                                <input type="hidden" name="envio" value="Envio particular"
+                                    id="checkout-envio-particular">
+                                <button type="submit" id="checkout-btn" name="checkout-btn"
+                                    class="text-mainLight bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-green font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">Finalizar
+                                    pedido</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="domiciliodata hidden w-full flex justify-center items-center">
+                <div class="w-5/6">
+                    <div class="p-4 bg-mainLight shadow-lg rounded-lg">
+                        <h3 class="text-center font-semibold my-2">
+                            ¿Cómo funciona el retiro por domicilio?
+                        </h3>
+                        <p>
+                            Disponemos de dos domicilios para retirar, uno ubicado en Berazategui Centro y otro en J.M.
+                            Gutierrez.
+                            <br><i class="text-greenLight">* Este servicio no tiene coste, se arreglará vía WhatsApp el
+                                día
+                                que esté disponible para retirar.</i>
+                        </p>
+                    </div>
+                    <div class="w-full flex justify-center my-8">
+                        <div class="bg-mainLight rounded-xl w-full shadow-sm px-6 py-4">
+                            <form action="checkout/place_order" method="post">
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="name" id="checkout-name"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer">
+                                        <label for="name"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="tel" name="phone" id="checkout-phone"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="phone"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-1 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="email" name="email" id="checkout-email"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                            placeholder=" " required="">
+                                        <label for="email"
+                                            class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="provincia" id="checkout-provincia"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                    placeholder=" " value="No aplica">
+                                <input type="hidden" name="city" id="checkout-city"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                    placeholder=" " value="No aplica">
+
+                                <input type="hidden" name="address" id="checkout-address"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                    placeholder=" " value="No aplica">
+                                <input type="hidden" name="numero" id="checkout-numero"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                    placeholder=" " value="No aplica">
                                 <input type="hidden" name="piso" id="checkout-piso"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    value="No aplica">
-                                
-                            </div>
-                        </div>
-                        <input type="hidden" name="envio" value="Envio particular" id="checkout-envio-particular">
-                        <button type="submit" id="checkout-btn" name="checkout-btn"
-                            class="text-textLight bg-green hover:bg-greenLight focus:ring-4 focus:outline-none focus:ring-green font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">Finalizar pedido</button>
-                    </form>
-                </div>
-        
-            </div>  
-        </div>    
-    </div>
-
-    <div class="domiciliodata hidden w-full flex justify-center items-center">
-        <div class="w-5/6">
-            <div class="p-4 bg-mainLight shadow-md rounded-lg">
-                <h3 class="text-center font-semibold my-2">
-                    ¿Cómo funciona el retiro por domicilio?
-                </h3>
-                <p>
-                    Disponemos de dos domicilios para retirar, uno ubicado en Berazategui Centro y otro en J.M. Gutierrez.
-                    <br><i class="text-greenLight">* Este servicio no tiene coste, se arreglará vía WhatsApp el día que esté disponible para retirar.</i>
-                </p>
-            </div>
-            <div class="w-full flex justify-center my-8">
-                <div class="bg-mainLight rounded-xl shadow-sm px-6 py-4">
-                    <form action="checkout/place_order" method="post">
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="name" id="checkout-name"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    >
-                                <label for="name"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="tel" name="phone" id="checkout-phone"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="phone"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>                               
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-1 md:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="email" name="email" id="checkout-email"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " required="">
-                                <label for="email"
-                                    class="peer-focus:font-medium absolute text-sm text-textLight  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-marronDark peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
-                            </div>
-                        </div>
-                        <input type="hidden" name="provincia" id="checkout-provincia"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
                                     placeholder=" " value="No aplica">
-                        <input type="hidden" name="city" id="checkout-city"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " value="No aplica">
+                                <input type="hidden" name="envio" value="Retiro en domicilio"
+                                    id="checkout-retiro-domicilio">
+                                <input type="hidden" name="postal" id="checkout-postal"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-marronBg focus:outline-none focus:ring-0 focus:border-marronBg peer"
+                                    placeholder=" " value="No aplica" required="">
+                                <input type="hidden" name="descripcion" value="No aplica">
+                                <button type="submit" id="checkout-btn" name="checkout-btn"
+                                    class="text-mainLight bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-green font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">Finalizar
+                                    pedido</button>
+                            </form>
+                        </div>
 
-                        <input type="hidden" name="address" id="checkout-address"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " value="No aplica">
-                        <input type="hidden" name="numero" id="checkout-numero"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " value="No aplica">
-                        <input type="hidden" name="piso" id="checkout-piso"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " value="No aplica">
-                        <input type="hidden" name="envio" value="Retiro en domicilio" id="checkout-retiro-domicilio">
-                        <button type="submit" id="checkout-btn" name="checkout-btn"
-                            class="text-textLight bg-green hover:bg-greenLight focus:ring-4 focus:outline-none focus:ring-green font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">Finalizar pedido</button>
-                    </form>
-                </div>
-        
-            </div>  
-        </div>    
-    </div>
-
-
-
-    <br>
-    <br>
-    <footer class="p-4 w-full bg-mainLight sm:p-6 dark:bg-gray-800">
-        <div class="md:flex md:justify-between">
-            <div class="mb-6 md:mb-0">
-                <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
-                    <img src="../images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16" alt="Bouvier Artesanal Logo">
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier Artesanal</span>
-                </a>
-                <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.</span>
-            </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="/" class="hover:underline">Inicio</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos" class="hover:underline">Productos</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/carrito" class="hover:underline">Carrito</a>
-                        </li>
-                        <li>
-                            <a href="/buscar" class="hover:underline">Buscar</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="/productos/jabones" class="hover:underline ">Jabones</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/cremas" class="hover:underline">Cremas</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/otros" class="hover:underline ">Otros</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="https://instagram.com/bouvierartesanal" target="_blank" class="hover:underline">Instagram</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="https://wa.me/5491159714867" target="_blank" class="hover:underline">Whatsapp</a>
-                        </li>
-                    </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos los derechos reservados.
-            </span>      
-        </div>
-    </footer>
-</body>
-<script src="../javascripts/index.js"></script>
-<script src="../javascripts/checkout.js"></script>
-<%- include('../templates/footer') %>
+
+
+
+            <br>
+            <br>
+        </main>
+        <footer class="p-4 w-full bg-mainLight sm:p-6 dark:bg-gray-800">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
+                        <img src="../images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16"
+                            alt="Bouvier Artesanal Logo">
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier
+                            Artesanal</span>
+                    </a>
+                    <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de la
+                        piel y cabello.</span>
+                </div>
+                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación</h2>
+                        <ul class="text-gray-600 dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="/" class="hover:underline">Inicio</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos" class="hover:underline">Productos</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/carrito" class="hover:underline">Carrito</a>
+                            </li>
+                            <li>
+                                <a href="/buscar" class="hover:underline">Buscar</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos</h2>
+                        <ul class="text-gray-600 dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="/productos/jabones" class="hover:underline ">Jabones</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos/cremas" class="hover:underline">Cremas</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/productos/otros" class="hover:underline ">Otros</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos</h2>
+                        <ul class="text-gray-600 dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="https://instagram.com/bouvierartesanal" target="_blank"
+                                    class="hover:underline">Instagram</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="https://wa.me/5491159714867" target="_blank"
+                                    class="hover:underline">Whatsapp</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a
+                        href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos los
+                    derechos reservados.
+                </span>
+            </div>
+        </footer>
+    </body>
+    <script src="../javascripts/index.js"></script>
+    <script src="../javascripts/checkout.js"></script>
+    <%- include('../templates/footer') %>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= productos.descripcionlarga%>">
+    <meta name="keywords"
+        content="Cosmetica natural, cosmetica, jabones artesanales, bouvier artesanal, productos naturales, productos artesanales">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="Spanish">
+    <link rel="shortcut icon" href="/images/logos/favicon.ico" type="image/x-icon">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/stylesheets/output.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="/stylesheets/hamburguer.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L59D76Y09T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-L59D76Y09T');
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "<%=productos.nombre%>",
+        "image": ["https://www.bouvierartesanal.com.ar/images/productos/subidosporweb/<%=productos.imagen%>"],
+        "description": "<%=productos.descripcionlarga%>",
+        "brand": {
+          "@type": "Brand",
+          "name": "Bouvier Artesanal"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.bouvierartesanal.com.ar/productos/<%=productos.categoria%>/<%=productos.id%>",
+          "priceCurrency": "ARS",
+          "price": "<%=productos.precio%>",
+          "priceValidUntil": "2022-07-29",
+          "itemCondition": "https://schema.org/UsedCondition",
+          "availability": "https://schema.org/InStock"
+        },
+        "seller": {
+            "type": "Organization",
+            "name": "Bouvier Artesanal"
+        }
+      }
+      </script>
+</head>
+
+<body class="bg-bgCardBg flex flex-col items-center">
+    <%- include('nav') %>

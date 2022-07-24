@@ -6,7 +6,7 @@
 <body class="bg-mainLight">
     <%- include('../templates/admin/nav') %>     
     <div class="flex overflow-hidden pt-16 bg-mainLight"> 
-        <aside class="bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex flex-shrink-0 flex-col" aria-label="Sidebar">
+        <aside class="aside hidden md:flex bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex-shrink-0 flex-col" aria-label="Sidebar">
             <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
             <ul class="space-y-2">
                 <li>
@@ -73,7 +73,7 @@
         </aside>
 
         </div>
-        <div class="main-content ml-64 h-full relative">
+        <div class="main-content ml-0 dm:ml-64 h-full relative">
             <main>
                 <div class="p-4 flex flex-col justify-between">
                     <nav class="flex mb-4" aria-label="Breadcrumb">
@@ -90,7 +90,7 @@
                         <span class="text-2xl font-medium">Inicio</span>
                     </div>
                 </div>
-                <div class="flex flex-col overflow-hidden">
+                <div class="flex flex-col items-center justify-center overflow-hidden">
                     <div class="overflow-hidden">
                         <div class="align-middle inline-block">
                             <div class="w-full flex items-center justify-center overflow-hidden">
@@ -162,5 +162,6 @@
         </div>
     </div>
 </body>
-<script src="/javascripts/index.js"></script>
+<script src="/javascripts/admin.js"></script>
+
 <%- include('../templates/footer') %>

@@ -4,11 +4,12 @@
 </head>
 
 <body class="bg-bgLight">
-    <body class="bg-mainLight">
-        <%- include('../templates/admin/nav') %> 
-        <div class="flex overflow-hidden pt-16 bg-mainLight"> 
-            <aside class="bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex flex-shrink-0 flex-col" aria-label="Sidebar">
-                <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+    <div class="flex overflow-hidden bg-mainLight"> 
+            <%- include('../templates/admin/nav') %>  
+    </div>
+    <div class="bg-mainLight h-full w-full relative overflow-y-auto">
+        <aside class="aside hidden md:flex bg-mainLight w-64 sidenav ease-out duration-300 border-solid border-[1px] border-[rgba(99,99,99,.2)] fixed z-20 h-full top-0 left-0 pt-16  flex-shrink-0 flex-col" aria-label="Sidebar">
+                <div class="overflow-y-auto margin py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
                 <ul class="space-y-2">
                     <li>
                         <a href="/admin" class="flex items-center p-2 text-base font-normal rounded-lg  hover:text-bgLight hover:bg-marronBg ">
@@ -71,10 +72,8 @@
                     </li> -->
                 </ul>
                 </div>
-            </aside>
-        </div>
-        <div class="main-content bg-mainLight ml-64 h-full w-full relative overflow-y-auto">
-            <main>
+        </aside>
+        <main class="main-content ml-0 md:ml-64 mt-16 main ease-out duration-300">
                 <div class="p-4 flex flex-col justify-between">
                     <nav class="flex mb-4" aria-label="Breadcrumb">
                         <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -160,12 +159,18 @@
                                                         Número
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 font-medium">
+                                                        Código postal
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                        Descripcion
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 font-medium">
                                                         Piso
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 font-medium">
                                                         Teléfono
                                                     </th>
-                                                    <th scope="col" class="px-6 py-3 font-medium">
+                                                    <th scope="col" class="px-6 py-3 pr-36 font-medium">
                                                         Fecha
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 font-medium">
@@ -233,6 +238,12 @@
                                                                 <%= datos[dato].numero %> 
                                                             </td>
                                                             <td class="px-4 py-4">
+                                                                <%= datos[dato].postal %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].descripcion %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
                                                                 <%= datos[dato].piso %> 
                                                             </td>
                                                             <td class="px-4 py-4">
@@ -244,7 +255,7 @@
                                                             <td class="px-4 py-4 text-center">
                                                                 <form action="/admin/pedidos/eliminar" method="post">
                                                                     <input type="hidden" name="id" value="<%= datos[dato].id %>">
-                                                                    <button class="font-medium p-2 rounded-xl bg-redlight text-red-600 hover:bg-red-600 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                                                                    <button class="font-medium p-2 rounded-xl bg-red-500 text-redlight hover:bg-red-700 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -306,6 +317,12 @@
                                                                 <%= datos[dato].numero %> 
                                                             </td>
                                                             <td class="px-4 py-4">
+                                                                <%= datos[dato].postal %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].descripcion %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
                                                                 <%= datos[dato].piso %> 
                                                             </td>
                                                             <td class="px-4 py-4">
@@ -316,7 +333,7 @@
                                                             </td>
                                                             <td class="px-4 py-4 text-center">
                                                                 <form action="/admin/eliminar/<%= datos[dato].id %> " method="post">
-                                                                    <button class="font-medium p-2 rounded-xl bg-red-400 text-red-200 hover:bg-red-700 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                                                                    <button class="font-medium p-2 rounded-xl bg-red-500 text-redlight hover:bg-red-700 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -378,6 +395,12 @@
                                                                 <%= datos[dato].numero %> 
                                                             </td>
                                                             <td class="px-4 py-4">
+                                                                <%= datos[dato].postal %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
+                                                                <%= datos[dato].descripcion %> 
+                                                            </td>
+                                                            <td class="px-4 py-4">
                                                                 <%= datos[dato].piso %> 
                                                             </td>
                                                             <td class="px-4 py-4">
@@ -402,14 +425,13 @@
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
-    </body>
+        </main>
+    </div>
+ </body>
 
 
 
 
 </body>
-<script src="/javascripts/index.js"></script>
 <script src="/javascripts/admin.js"></script>
 <%- include('../templates/footer') %>

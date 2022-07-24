@@ -12,15 +12,18 @@
             <%- include('../templates/admin/nav') %>
             <div class="flex overflow-hidden pt-16 bg-mainLight">
                 <aside
-                    class="bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex flex-shrink-0 flex-col"
+                    class="aside hidden md:flex bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex-shrink-0 flex-col"
                     aria-label="Sidebar">
                     <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
                         <ul class="space-y-2">
                             <li>
-                                <a href="/admin" class="flex items-center p-2 text-base font-normal rounded-lg  hover:text-bgLight hover:bg-marronBg ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                      </svg>
+                                <a href="/admin"
+                                    class="flex items-center p-2 text-base font-normal rounded-lg  hover:text-bgLight hover:bg-marronBg ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
                                     <span class="flex-1 ml-3 whitespace-nowrap">Inicio</span>
                                     <!-- <span class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span> -->
                                 </a>
@@ -86,7 +89,7 @@
                         </ul>
                     </div>
                 </aside>
-                <div class="main-content ml-64 h-full w-full relative overflow-y-auto">
+                <div class="main-content ml-0 md:ml-64 h-full w-full relative overflow-y-auto">
                     <main>
                         <div class="p-4 flex flex-col justify-between">
                             <nav class="flex mb-4" aria-label="Breadcrumb">
@@ -144,13 +147,54 @@
                                                     class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-marronBg focus:border-marronBg"
                                                     required>
                                             </div>
+                                            
+                                            <div class="mb-6">
+                                                <label for="precio_oferta"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Precio de oferta
+                                                    del producto (dejar vacío si no hay ofertas existentes para el producto)</label>
+                                                <input type="number" id="precio_oferta" name="precio_oferta"
+                                                    class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-marronBg focus:border-marronBg"
+                                                    >
+                                            </div>
+
                                             <div class="mb-6">
                                                 <label for="descripcion"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Descripción
                                                     del producto</label>
                                                 <textarea id="descripcionlarga" name="descripcionlarga" rows="4"
-                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-marronBg focus:border-marronBg"></textarea>
+                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-marronBg focus:border-marronBg" required></textarea>
                                             </div>
+
+                                            <div class="mb-6">
+                                                <label for="modouso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Modo de uso</label>
+                                                <textarea name="modouso" id="modouso" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 1</label>
+                                                <input type="text" id="componentes1" name="componentes1" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 2</label>
+                                                <input type="text" id="componentes2" name="componentes2" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 3</label>
+                                                <input type="text" id="componentes3" name="componentes3" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 4</label>
+                                                <input type="text" id="componentes4" name="componentes4" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 5</label>
+                                                <input type="text" id="componentes5" name="componentes5" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </div>
+
                                             <div class="mb-6">
                                                 <label for="stock"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stock</label>
@@ -163,29 +207,95 @@
                                                     for="imagen">Imagen del producto</label>
                                                 <input name="imagen"
                                                     class="block w-full text-sm text-bgLight rounded-lg cursor-pointer bg-marronBg focus:outline-none"
-                                                    aria-describedby="product_image_help" id="imagen" type="file">
+                                                    aria-describedby="product_image_help" id="imagen" type="file" required>
                                             </div>
+
                                             <div class="mb-6">
                                                 <label for="alternative"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Descripción
                                                     de la imagen</label>
                                                 <input type="text" id="alternative" name="alternative"
                                                     class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-marronBg focus:border-marronBg"
-                                                    required>
+                                                    >
                                             </div>
+
+                                            <div class="mb-6">
+                                                <div class="relative shadow-lg sm:rounded-lg">
+                                                    <table
+                                                        class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                        <tbody>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                    Tipo de piel
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="tipodepiel"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tipo de piel</label> -->
+                                                                    <input type="text" id="tipodepiel"
+                                                                        name="tipodepiel"
+                                                                        class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg sm:text-md focus:ring-marronBg focus:border-marronBg"
+                                                                        >
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                    Cantidad
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="cantidad"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cantidad</label> -->
+                                                                    <input type="text" id="cantidad"
+                                                                        name="cantidad"
+                                                                        class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-marronBg focus:border-marronBg"
+                                                                        >
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap  dark:text-white dark:bg-gray-800">
+                                                                    Duración
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="duracion"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Duracion</label> -->
+                                                                    <input type="text" id="duracion"
+                                                                        name="duracion"
+                                                                        class="block w-full p-4 bg-bgCardBg text-gray-900 border border-gray-300 rounded-lg  sm:text-md focus:ring-marronBg focus:border-marronBg"
+                                                                        >
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                    Envase reciclable
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="reciclabe"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Reciclable</label> -->
+                                                                        <select id="reciclable" name="reciclable"
+                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-marronBg focus:border-marronBg block w-full p-2.5">
+                                                                            <option value="Sí">Sí</option>
+                                                                            <option value="No">No</option>
+                                                                        </select>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
                                             <div class="mb-6">
                                                 <label for="categoria"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Categoría
                                                     del producto</label>
                                                 <select id="categoria" name="categoria"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-marronBg focus:border-marronBg block w-full p-2.5">
-                                                    <option value="jabones">Jabones</option>
-                                                    <option value="cremas">Cremas</option>
-                                                    <option value="bano-nutricion-tratamiento">Baño de nutrición /
-                                                        tratamiento</option>
                                                     <option value="capilares">Capilares</option>
+                                                    <option value="cremas">Cremas</option>
                                                     <option value="exfoliantes">Exfoliantes</option>
-                                                    <option value="jabones-liquidos">Jabones liquidos</option>
+                                                    <option value="jabones">Jabones</option>
                                                     <option value="limpiadores">Limpiadores</option>
                                                     <option value="mascarillas">Mascarillas</option>
                                                     <option value="otros">Otros</option>
@@ -207,5 +317,5 @@
             </div>
         </body>
     </body>
-    <script src="/javascripts/index.js"></script>
+    <script src="/javascripts/admin.js"></script>
     <%- include('../templates/footer') %>

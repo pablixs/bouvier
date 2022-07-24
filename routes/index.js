@@ -1,11 +1,17 @@
 var express = require('express');
 var router = express.Router();
 const indexController = require('../controllers/indexController')
+// const generateSitemap =  require('../middlewares/generateSitemap')
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Bouvier Artesanal' });
+  console.log(req.session)
+  res.render('index', { title: 'Bouvier Artesanal - Cosmética natural' });
 });
+
+// router.get('/sitemap.xml',generateSitemap)
+
 
 router.get('/buscar',indexController.buscarIndex)
 

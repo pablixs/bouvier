@@ -5,77 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <meta name="description"
+        content="<%= productos.descripcionlarga%>">
+    <meta name="keywords"
+        content="Cosmetica natural, cosmetica, jabones artesanales, bouvier artesanal, productos naturales, productos artesanales">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="Spanish">
+    <link rel="shortcut icon" href="/images/logos/favicon.ico" type="image/x-icon">
+    <title>
+        <%= title %>
+    </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="/stylesheets/output.css">
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="/stylesheets/hamburguer.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L59D76Y09T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-L59D76Y09T');
+    </script>
 </head>
+<!-- <script src="/javascripts/index.js"></script> -->
 
-<body class="bg-bgLight">
-    <header class="w-full h-14 flex sticky top-0 z-50">
-        <div
-            class="sidenav w-0 h-screen bg-mainLight shadow-md fixed z-10 top-0 left-0 overflow-x-hidden pt-6 ease-out duration-300">
-            <ul class="mt-10">
-                <a href="/">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Inicio</li>
-                </a>
-                <a href="/productos">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Productos</li>
-                </a>
-                <a href="/productos/jabones">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Jabones</li>
-                </a>
-                <a href="/productos/cremas">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Cremas</li>
-                </a>
-                <a href="#">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Buscar</li>
-                </a>
-            </ul>
-        </div>
-        <div class="screendarker w-full h-screen bg-[rgba(0,0,0,.8)] absolute hidden ease-linear duration-300">
-
-        </div>
-        <div class="w-full h-full bg-mainLight shadow-md flex fix z-40">
-            <div class="flex justify-between items-center w-full">
-                <div class="hamburguerbtn">
-                    <button class="hamburger hamburger--spin z-40" type="button">
-                        <span class="hamburger-box z-40">
-                            <span class="hamburger-inner text-textLight z-40"></span>
-                        </span>
-                    </button>
-                </div>
-
-                <div class="logo">
-                    <img src="../../images/logos/bouvier-logo-lightversion.png" alt="Bouvier Artesanal" width="50">
-
-                </div>
-
-
-                <div class="icons">
-                    <button class="mx-8" type="button">
-                        <span>
-                            <a href="/carrito">
-                                <i class="fa-solid fa-bag-shopping text-xl text-textLight "></i>
-                            </a>
-                        </span>
-                    </button>
-
-                    <button class="mr-6" type="button">
-                        <a href="/buscar">
-                            <i class="fa-solid fa-magnifying-glass text-textLight"></i>
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+<body class="bg-bgCardBg flex flex-col items-center">
+    <%- include('nav') %>

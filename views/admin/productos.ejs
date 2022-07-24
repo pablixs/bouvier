@@ -4,9 +4,11 @@
 </head>
 
 <body class="bg-mainLight">
-    <%- include('../templates/admin/nav') %>     
-    <div class="flex overflow-hidden pt-16 bg-mainLight"> 
-        <aside class="bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex flex-shrink-0 flex-col" aria-label="Sidebar">
+    <div class="flex overflow-hidden bg-mainLight"> 
+        <%- include('../templates/admin/nav') %>     
+    </div>
+    <div class="h-full w-full relative overflow-y-auto">
+        <aside class="aside hidden md:flex bg-mainLight  border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex-shrink-0 flex-col" aria-label="Sidebar">
             <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
             <ul class="space-y-2">
                 <li>
@@ -71,11 +73,8 @@
             </ul>
             </div>
         </aside>
-
-        </div>
-        <div class="main-content ml-64 h-full w-full relative overflow-y-auto">
-            <main>
-                <div class="p-4 flex flex-col justify-between">
+        <main class="main-content ml-0 md:ml-64 mt-16">
+            <div class="p-4 flex flex-col justify-between">
                     <nav class="flex mb-4" aria-label="Breadcrumb">
                         <ol class="inline-flex items-center space-x-1 md:space-x-3">
                           <li class="inline-flex items-center">
@@ -113,8 +112,8 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="flex flex-col">
+            </div>
+            <div class="flex flex-col">
                     <div class="overflow-x-auto">
                         <div class="align-middle inline-block min-w-full">
                             <div class="w-full flex items-center justify-center overflow-hidden">
@@ -154,7 +153,7 @@
                                                     </th>
                                                     <th scope="row" class="px-6 flex items-center py-4 font-medium text-marronDark dark:text-white whitespace-nowrap">
                                                         <img src="/images/productos/subidosporweb/<%=datos[dato].imagen%>" alt="" class="w-14 h-14 mr-4 rounded-full object-cover">
-                                                        <%= datos[dato].nombre %> 
+                                                        <a href="/productos/<%= datos[dato].categoria %>/<%= datos[dato].id %> " class="hover:cursor-pointer border-marronBg hover:border-b-2"> <%= datos[dato].nombre %> </a>
                                                     </th>
                                                     <td class="px-6 py-4">
                                                         $<%= datos[dato].precio %> 
@@ -188,10 +187,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
+
 </body>
 <script>
     var productoslista = document.querySelectorAll('.productoslista')
@@ -213,6 +212,5 @@
     }
     
 </script>
-<script src="/javascripts/index.js"></script>
 <script src="/javascripts/admin.js"></script>
 <%- include('../templates/footer') %>

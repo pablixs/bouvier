@@ -1,207 +1,213 @@
 <%- include('templates/head') %>
-<link rel="stylesheet" href="stylesheets/output.css">
-<link rel="stylesheet" href="stylesheets/hamburguer.css">
+    <link rel="stylesheet" href="stylesheets/output.css">
+    <link rel="stylesheet" href="stylesheets/hamburguer.css">
 
-</head>
+    </head>
 
-<body class="bg-mainLight h-screen">
-    <header class="w-full h-14 flex sticky top-0 z-50">
-        <div
-            class="sidenav w-0 h-screen bg-mainLight shadow-md fixed z-10 top-0 left-0 overflow-x-hidden pt-6 ease-out duration-300">
-            <ul class="mt-10">
-                <a href="/">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Inicio</li>
-                </a>
-                <a href="/productos">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Productos</li>
-                </a>
-                <a href="/productos/jabones">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Jabones</li>
-                </a>
-                <a href="/productos/cremas">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Cremas</li>
-                </a>
-                <a href="#">
-                    <li class="my-4 ml-2 w-max text-lg hover:border-solid hover:border-b-2 hover:border-b-marronDark">
-                        Buscar</li>
-                </a>
-            </ul>
-        </div>
-        <div class="screendarker w-full h-screen bg-[rgba(0,0,0,.8)] absolute hidden ease-linear duration-300">
+    <body class="bg-mainLight h-screen scroll-smooth">
 
-        </div>
-        <div class="w-full h-full bg-mainLight shadow-md flex fix z-40">
-            <div class="flex justify-between items-center w-full">
-                <div class="hamburguerbtn">
-                    <button class="hamburger hamburger--spin z-40" type="button">
-                        <span class="hamburger-box z-40">
-                            <span class="hamburger-inner text-textLight z-40"></span>
-                        </span>
-                    </button>
-                </div>
-
-                <div class="logo">
-                    <img src="../../images/logos/bouvier-logo-lightversion.png" alt="Bouvier Artesanal" width="50">
-
-                </div>
-
-
-                <div class="icons">
-                    <button class="mx-8" type="button">
-                        <span>
-                            <a href="/carrito">
-                                <i class="fa-solid fa-bag-shopping text-xl text-textLight "></i>
+        <%- include('templates/nav') %>
+            <section class="bg-mainLight relative overflow-hidden">
+                <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+                    <div
+                        class="mr-auto md:mx-auto sm:flex sm:flex-col sm:items-center lg:block place-self-center lg:col-span-7">
+                        <h2 class="text-marronBg mb-2 sm:my-4 text-xl font-medium">Bouvier Artesanal</h2>
+                        <h1
+                            class="max-w-2xl text-marronDark mb-4 sm:text-center text-5xl font-extrabold tracking-tight leading-none md:text-left md:text-5xl xl:text-6xl">
+                            Cosmética natural</h1>
+                        <p
+                            class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-left md:text-lg lg:text-xl sm:text-xl sm:text-center">
+                            Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.
+                        </p>
+                        <div>
+                            <a href="/productos"
+                                class="inline-flex items-center sm:my-6 justify-center px-5 py-3 mr-3 text-base font-medium text-center text-mainLight rounded-lg bg-marronBg hover:bg-marronDark focus:ring-4 focus:ring-marronBg">Ver
+                                productos
+                                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
                             </a>
-                        </span>
-                    </button>
+                            <a href="#contact"
+                                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-marronBg border border-marronBg rounded-lg hover:bg-marronBg hover:text-mainLight focus:ring-4 focus:ring-marronBg">
+                                Contactanos
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden lg:mt-0 lg:col-span-5 lg:flex animate-nashe">
+                        <img src="/images/logos/bouvier-logo-lightversion.png" alt="Logo de Bouvier Artesanal">
+                    </div>
+                </div>
+            </section>
 
-                    <button class="mr-6" type="button">
-                        <a href="/buscar">
-                            <i class="fa-solid fa-magnifying-glass text-textLight"></i>
+            <section class="bg-white">
+                <div
+                    class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+                    <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                        <div class="flex justify-evenly my-4">
+                            <img src="/images/productos/backgrounds/vectores/crueldad.webp" class="w-14 h-14"
+                                alt="Productos cruelty free">
+                            <img src="/images/productos/backgrounds/vectores/natural.webp" class="w-14 h-14"
+                                alt="Productos 100% naturales">
+                            <img src="/images/productos/backgrounds/vectores/parabenos.webp" class="w-14 h-14"
+                                alt="Productos sin parabenos">
+                            <img src="/images/productos/backgrounds/vectores/siliconas.webp" class="w-14 h-14"
+                                alt="Productos sin siliconas">
+                            <img src="/images/productos/backgrounds/vectores/sulfatos.webp" class="w-14 h-14"
+                                alt="Productos sin siliconas">
+                        </div>
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-marronDark">Usamos productos 100%
+                            naturales,
+                            libres de químicos y crueldad animal.</h2>
+                        <p class="mb-4">Nuestros productos son elaborados con materias primas naturales, nobles y puras,
+                            libre
+                            de
+                            químicos y sin aromas artificiales, no son testeados en animales ni pasan por procesos
+                            industrializados.</p>
+                        <p>Creamos una marca que motiva a buscar alternativas mas saludables a la hora de cuidar
+                            diariamente nuestra piel y cabello.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <img class="w-full h-4/5 object-cover rounded-lg"
+                            src="/images/productos/backgrounds/jabones-general-01.webp"
+                            alt="Una imagen de jabones naturales">
+                        <img class="mt-4 w-full lg:mt-10 rounded-lg" src="images/productos/backgrounds/serum-oil.jfif"
+                            alt="Una imagen de aceite natural">
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="bg-white">
+                <div
+                    class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+                    <div class="w-full h-[350px]">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/EIRKoSKYfd4"
+                            title="AIRBAG - Diez días después - Vivo en el Luna Park Round2" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <!-- <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image"> -->
+                    <!-- <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image"> -->
+                    <div class="mt-4 md:mt-0 md:h-full">
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-marronDark dark:text-white">¿Como
+                            usar
+                            nuestra página?</h2>
+                        <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Te dejamos un video en el
+                            que
+                            detallamos paso a paso como realizar un pedido desde esta web.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="bg-white" id="contact">
+                <div
+                    class="p-4 w-full text-center bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <h5 class="mb-2 text-3xl font-bold text-marronDark ">Contactate con nosotros</h5>
+                    <p class="mb-5 text-base text-gray-500 sm:text-lg">Ante cualquier duda sobre la página o los
+                        productos, no dudes en contactarnos</p>
+                    <div class="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+                        <a href="https://www.instagram.com/bouvierartesanal/" target="_blank"
+                            class="w-full sm:w-auto bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                            <i class="fa-brands fa-instagram mr-3 text-3xl"></i>
+                            <div class="text-left">
+                                <div class="mb-1 text-xs">Encontranos</div>
+                                <div class="-mt-1 font-sans text-sm font-semibold">en Instagram</div>
+                            </div>
                         </a>
-                    </button>
+                        <a href="https://wa.me/5491159714867" target="_blank"
+                            class="w-full sm:w-auto bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                            <i class="fa-brands fa-whatsapp mr-3 text-3xl"></i>
+                            <div class="text-left">
+                                <div class="mb-1 text-xs">Mensajeanos</div>
+                                <div class="-mt-1 font-sans text-sm font-semibold">en WhatsApp</div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </header>
+            </section>
 
-    <section class="bg-mainLight">
-        <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-            <div class="mr-auto place-self-center lg:col-span-7">
-                <h1 class="max-w-2xl text-marronDark mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">Bouvier Artesanal</h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.
-                </p>
-                <a href="/productos" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-mainLight rounded-lg bg-marronBg hover:bg-marronDark focus:ring-4 focus:ring-marronBg">Ver productos
-                    <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
-                <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-marronBg border border-marronBg rounded-lg hover:bg-marronBg hover:text-mainLight focus:ring-4 focus:ring-marronBg">
-                    Contactanos
-                </a> 
-            </div>
-            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex animate-nashe">
 
-                <img src="/images/logos/bouvier-logo-lightversion.png" alt="mockup">
-            </div>                
-        </div>
-    </section>
 
-    <section class="bg-white dark:bg-gray-900">
-        <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-            <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-                <div class="flex justify-evenly my-4">
-                    <img src="images/productos/backgrounds/vectores/crueldad.png" class="w-14 h-14" alt="">
-                    <img src="images/productos/backgrounds/vectores/natural.png" class="w-14 h-14" alt="">
-                    <img src="images/productos/backgrounds/vectores/parabenos.png" class="w-14 h-14" alt="">
-                    <img src="images/productos/backgrounds/vectores/siliconas.png" class="w-14 h-14" alt="">
-                    <img src="images/productos/backgrounds/vectores/sulfatos.png" class="w-14 h-14" alt="">
+            <footer class="z-0 p-4 w-full bg-mainLight sm:p-6 dark:bg-gray-800">
+                <div class="md:flex md:justify-between">
+                    <div class="mb-6 md:mb-0">
+                        <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
+                            <img src="/images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16"
+                                alt="Bouvier Artesanal Logo">
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier
+                                Artesanal</span>
+                        </a>
+                        <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de
+                            la piel
+                            y cabello.</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div>
+                            <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación
+                            </h2>
+                            <ul class="text-gray-600 dark:text-gray-400">
+                                <li class="mb-4">
+                                    <a href="/" class="hover:underline">Inicio</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="/productos" class="hover:underline">Productos</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="/carrito" class="hover:underline">Carrito</a>
+                                </li>
+                                <li>
+                                    <a href="/buscar" class="hover:underline">Buscar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos
+                            </h2>
+                            <ul class="text-gray-600 dark:text-gray-400">
+                                <li class="mb-4">
+                                    <a href="/productos/jabones" class="hover:underline ">Jabones</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="/productos/cremas" class="hover:underline">Cremas</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="/productos/otros" class="hover:underline ">Otros</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos
+                            </h2>
+                            <ul class="text-gray-600 dark:text-gray-400">
+                                <li class="mb-4">
+                                    <a href="https://instagram.com/bouvierartesanal" target="_blank"
+                                        class="hover:underline">Instagram</a>
+                                </li>
+                                <li class="mb-4">
+                                    <a href="https://wa.me/5491159714867" target="_blank"
+                                        class="hover:underline">Whatsapp</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-marronDark">Usamos productos 100% naturales, libres de químicos y crueldad animal.</h2>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi fugiat eligendi excepturi perspiciatis aliquid perferendis natus ea dolorem praesentium, temporibus corporis facere, unde qui vitae odit accusamus, consequatur beatae tempore?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi fugiat eligendi excepturi perspiciatis aliquid perferendis natus ea dolorem praesentium.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mt-8">
-                <img class="w-full h-4/5 object-cover rounded-lg" src="images/productos/backgrounds/jabones-general-01.webp" alt="Una imagen de jabones naturales">
-                <img class="mt-4 w-full lg:mt-10 rounded-lg" src="images/productos/backgrounds/serum-oil.jfif" alt="Una imagen de aceite natural">
-            </div>
-        </div>
-    </section>
-
-
-    <section class="bg-white dark:bg-gray-900">
-        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-            <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
-            <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
-            <div class="mt-4 md:mt-0">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-marronDark dark:text-white">Let's create more tools and ideas that brings us together.</h2>
-                <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
-                <a href="#" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
-                    Get started
-                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-
-    
-
-
-
-    <footer class="z-0 p-4 w-full bg-mainLight sm:p-6 dark:bg-gray-800">
-        <div class="md:flex md:justify-between">
-            <div class="mb-6 md:mb-0">
-                <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
-                    <img src="../images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16"
-                        alt="Bouvier Artesanal Logo">
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier
-                        Artesanal</span>
-                </a>
-                <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de la piel
-                    y cabello.</span>
-            </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="/" class="hover:underline">Inicio</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos" class="hover:underline">Productos</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/carrito" class="hover:underline">Carrito</a>
-                        </li>
-                        <li>
-                            <a href="/buscar" class="hover:underline">Buscar</a>
-                        </li>
-                    </ul>
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a
+                            href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos
+                        los
+                        derechos reservados.
+                    </span>
                 </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="/productos/jabones" class="hover:underline ">Jabones</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/cremas" class="hover:underline">Cremas</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/otros" class="hover:underline ">Otros</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="https://instagram.com/bouvierartesanal" target="_blank"
-                                class="hover:underline">Instagram</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="https://wa.me/5491159714867" target="_blank" class="hover:underline">Whatsapp</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a
-                    href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos los
-                derechos reservados.
-            </span>
-        </div>
-    </footer>
+            </footer>
 
-</body>
-<script src="javascripts/index.js"></script>
-<%- include('templates/footer') %>
+    </body>
+    <script src="javascripts/index.js"></script>
+    <%- include('templates/footer') %>

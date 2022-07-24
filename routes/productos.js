@@ -8,13 +8,9 @@ router.get('/jabones',productosController.jabones);
 
 router.get('/cremas',productosController.cremas)
 
-router.get('/bano-nutricion-tratamiento',productosController.banoNutricionTratamiento)
-
 router.get('/capilares',productosController.capilares)
 
 router.get('/exfoliantes',productosController.exfoliantes)
-
-router.get('/jabones-liquidos',productosController.jabonesLiquidos)
 
 router.get('/limpiadores',productosController.limpiadores)
 
@@ -26,6 +22,8 @@ router.get('/serum',productosController.serum)
 
 router.get('/tonicos',productosController.tonicos)
 
+router.get('/kits',productosController.kits)
+
 
 
 
@@ -33,13 +31,9 @@ router.get('/jabones/:id',productosController.mostrarPorIdJabones)
 
 router.get('/cremas/:id',productosController.mostrarPorIdCremas)
 
-router.get('/bano-nutricion-tratamiento/:id',productosController.mostrarPorIdBanoNutricion)
-
 router.get('/capilares/:id',productosController.mostrarPorIdCapilares)
 
 router.get('/exfoliantes/:id',productosController.mostrarPorIdExfoliantes)
-
-router.get('/jabones-liquidos/:id',productosController.mostrarPorIdJabonesLiquidos)
 
 router.get('/limpiadores/:id',productosController.mostrarPorIdLimpiadores)
 
@@ -50,5 +44,15 @@ router.get('/otros/:id',productosController.mostrarPorIdOtros)
 router.get('/serum/:id',productosController.mostrarPorIdSerum)
 
 router.get('/tonicos/:id',productosController.mostrarPorIdTonicos)
+
+router.get('/kits/:id',productosController.mostrarPorIdKits)
+
+router.post('/pregunta/hacer',productosController.hacerPregunta)
+
+router.post('/pregunta/responder',productosController.responderPregunta)
+
+router.post('/pregunta/eliminar',productosController.eliminarPregunta)
+
+router.post('/pregunta/eliminarrespuesta',productosController.eliminarRespuesta)
 
 module.exports = router;

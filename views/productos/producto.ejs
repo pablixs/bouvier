@@ -1,107 +1,676 @@
-<%- include('../templates/headProductos') %> 
-    <main class="bg-mainLight w-full px-4 py-4 flex flex-col">
-        <article class="overflow-hidden flex flex-col items-center">
-            <img class="block w-11/12 h-96 object-cover shadow-md" src="/images/productos/subidosporweb/<%=productos[producto].imagen%>" alt="">
-            <header class="w-full flex flex-col justify-start items-center">
-                <span class="text-textLight text-2xl font-normal w-11/12 mt-8 mb-2">
-                    <%=productos.nombre %>
-                </span>
-                <span class="text-textLight text-2xl font-normal w-11/12">                   
-                    $<%=productos.precio %>
-                </span>
-            </header>
-            <footer class=" w-11/12 my-6">
-                <form action="../../carrito/add-to-cart" method="post">
-                    <input type="hidden" name="id" value="<%=productos.id%>">
-                    <input type="hidden" name="nombre" value="<%=productos.nombre%>">
-                    <input type="hidden" name="precio" value="<%=productos.precio%>">
-                    <input type="hidden" name="categoria" value="<%=productos.categoria%>">
-                    <input type="hidden" name="cantidad" value="1">
-                    <input type="hidden" name="imagen" value="<%=productos.imagen%>">
-                    <button type="submit" name="addtocart" id="addtocart" class="rounded-lg p-2.5 bg-marronDark text-mainLight w-full focus:bg-marronBg hover:bg-marronBg cursor-pointer">
-                        Añadir al carrito
-                    </button>
-                </form>
-                <br>
-                <span class="text-sm h-8">
-                    Categoría: <a href="/productos/<%= productos.categoria %> "><%= productos.categoria %></a> 
-                </span>
-            </footer>
-            <section class="w-11/12 flex flex-col">
-                <span class="text-xl mt-4">
-                    Descripción del producto
-                </span>
-                <span class="my-6">
-                    <%= productos.descripcionlarga%>
-                </span>
-            </section>
-        </article>
-    </main>
-    <br>
-    <br>
-    <footer class="p-4 w-full bg-mainLight sm:p-6 dark:bg-gray-800">
-        <div class="md:flex md:justify-between">
-            <div class="mb-6 md:mb-0">
-                <a href="https://instagram.com/bouvierartesanal" class="flex items-center">
-                    <img src="../images/logos/bouvier-logo-lightversion.png" class="mr-3 h-16" alt="Bouvier Artesanal Logo">
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bouvier Artesanal</span>
-                </a>
-                <span class="text-base italic my-4">Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.</span>
-            </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Navegación</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="/" class="hover:underline">Inicio</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos" class="hover:underline">Productos</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/carrito" class="hover:underline">Carrito</a>
-                        </li>
-                        <li>
-                            <a href="/buscar" class="hover:underline">Buscar</a>
-                        </li>
-                    </ul>
+<%- include('../templates/headSingleProduct') %>
+
+    <% if (productos.stock>= 1) {%>
+        <main class="bg-mainLight sm:w-full lg:w-5/6 lg:px-10 lg:py-6 px-4 py-4 lg:my-10 lg:rounded-lg flex flex-col">
+            <article class="overflow-hidden flex flex-col items-center">
+                <div class="lg:flex lg:w-full w-11/12 lg:flex-row flex sm:flex-col">
+
+                    <div class="sm:order-1 lg:hidden">
+                        <span class="w-11/12 uppercase text-left text-xs text-gray-400 h-8">
+                            Categoría: <a href="/productos/<%= productos.categoria %> ">
+                                <%= productos.categoria %>
+                            </a>
+                        </span>
+                        <h1 class="text-textLight w-11/12 text-left text-2xl font-light mb-2">
+                            <%=productos.nombre %>
+                        </h1>
+                    </div>
+
+                    <div class="order-2 lg:order-2 lg:min-w-[380px]">
+                        <div class="divdos sm:hidden lg:block lg:order-2">
+                            <span class="w-11/12 uppercase text-left text-xs text-gray-400 h-8">
+                                Categoría: <a href="/productos/<%= productos.categoria %> ">
+                                    <%= productos.categoria %>
+                                </a>
+                            </span>
+                            <h1 class="text-textLight w-max text-left lg:font-bold text-3xl sm:font-light mt-4 mb-2">
+                                <%=productos.nombre %>
+                            </h1>
+                        </div>
+
+                        <div class="lg:order-3">
+                            <header class="w-full flex flex-col justify-start items-center">
+                                <div class="sm:w-full lg:w-full flex lg:flex-col justify-between">
+                                    <% if (productos.precio_oferta) {%>
+                                        <div>
+                                            <span
+                                                class="text-gray-500 text-xl flex flex-col  sm:text-xl lg:font-normal items-start mt-8 mb-2 font-thin sm:w-11/12 lg:w-full">
+                                                <span class="text-gray-500 line-through">$&nbsp; <%=productos.precio %>
+                                                        </span>
+                                                <span
+                                                    class="text-textLight text-3xl sm:text-4xl lg:font-normal flex items-center mb-2 sm:font-light sm:w-full lg:w-full">
+                                                    <span class="">$&nbsp;</span>
+                                                    <%=productos.precio_oferta %>
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-6 w-6 ml-4 mt-2 " fill="none" viewBox="0 0 24 24"
+                                                            stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                        </svg>
+                                                        <% var precio=parseInt(100 - (productos.precio_oferta *100)/productos.precio) %>
+                                                            <span class="text-xl ml-4 absolute left-32 lg:left-0 lg:relative lg:w-max text-green-400">
+                                                                <%=precio%>% OFF
+                                                            </span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <span
+                                            class="px-2 font-semibold py-1 hidden lg:block bg-marronBg w-max sm:h-max rounded-lg text-sm text-mainLight">OFERTA!</span>
+                                        <% } else { %>
+
+                                            <span
+                                                class="text-textLight text-3xl sm:text-4xl lg:font-normal flex items-center mt-8 mb-2 sm:font-light sm:w-11/12 lg:w-full">
+                                                <span class="">$&nbsp;</span>
+                                                <%=productos.precio %>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-4 mt-2 "
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                        stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                    </svg>
+                                            </span>
+                                            <% } %>
+                                                <span
+                                                    class="text-right lg:text-left w-full flex sm:flex-col sm:items-end lg:flex-row text-green-400 text-lg font-normal mt-8 mb-2">
+                                                    Producto disponible
+                                                    <% if (productos.precio_oferta) {%>
+                                                        <span
+                                                            class="px-2 lg:hidden font-semibold py-1 text-right bg-marronBg w-max sm:h-max rounded-lg text-lg text-mainLight">OFERTA!</span>
+                                                        <% } else { %>
+                                                            <% } %>
+                                                </span>
+                                </div>
+                            </header>
+
+                            <footer class="lg:w-11/12 sm:w-full my-6">
+                                <form action="../../carrito/add-to-cart" method="post">
+                                    <input type="hidden" name="id" value="<%=productos.id%>">
+                                    <input type="hidden" name="nombre" value="<%=productos.nombre%>">
+                                    <% if(productos.precio_oferta){ %>
+                                        <input type="hidden" name="precio" value="<%=productos.precio_oferta%>">
+                                        <input type="hidden" name="oferta" value="si">
+                                        <% } else { %>
+                                            <input type="hidden" name="precio" value="<%=productos.precio%>">
+                                            <input type="hidden" name="oferta" value="no">
+                                            <% } %>
+                                                <input type="hidden" name="categoria" value="<%=productos.categoria%>">
+                                                <input type="hidden" name="cantidad" value="1">
+                                                <input type="hidden" name="imagen" value="<%=productos.imagen%>">
+                                                <button type="submit" name="addtocart" id="addtocart"
+                                                    class="rounded-lg p-2.5 bg-marronDark text-mainLight w-full focus:bg-marronBg hover:bg-marronBg cursor-pointer">
+                                                    Añadir al carrito
+                                                </button>
+                                </form>
+                                <br>
+                            </footer>
+                        </div>
+                    </div>
+
+                    <div class="divuno order-1 lg:order-1">
+                        <figure class="lg:w-11/12 md:flex md:justify-center sm:w-full lg:max-w-[570px]">
+                            <img class="block w-[552px] h-96 object-cover shadow-md rounded-lg"
+                                src="/images/productos/subidosporweb/<%=productos.imagen%>"
+                                alt="<%=productos.alternative%>">
+                        </figure>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Productos</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="/productos/jabones" class="hover:underline ">Jabones</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/cremas" class="hover:underline">Cremas</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/exfoliantes" class="hover:underline">Exfoliantes</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="/productos/otros" class="hover:underline ">Otros</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-marronBg uppercase dark:text-white">Contactanos</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4">
-                            <a href="https://instagram.com/bouvierartesanal" target="_blank" class="hover:underline">Instagram</a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="https://wa.me/5491159714867" target="_blank" class="hover:underline">Whatsapp</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://bouvierartesanal.com.ar/" class="hover:underline">Bouvier Artesanal</a>. Todos los derechos reservados.
-            </span>      
-        </div>
-    </footer>
-</body>
-<script src="../../javascripts/index.js"></script>
-<%- include('../templates/footer') %> 
+
+
+                <% if(productos.descripcionlarga===0) {%>
+                    <% } else { %>
+                        <section class="sm:w-11/12 lg:w-full flex flex-col my-8">
+                            <h3 class="sm:text-xl lg:text-2xl mt-4">
+                                Descripción del producto
+                            </h3>
+                            <span class="my-6">
+                                <%= productos.descripcionlarga%>
+                            </span>
+                        </section>
+                        <% } %>
+
+
+                            <% if(productos.modouso.length===0) {%>
+                                <% } else { %>
+                                    <section||
+                                        class="sm:w-11/12 lg:w-full flex flex-col my-4 border-t-gray-300 border-t-[1px]">
+                                        <h3 class="sm:text-xl lg:text-2xl mt-4">
+                                            Modo de uso
+                                        </h3>
+                                        <span class="my-6">
+                                            <%= productos.modouso%>
+                                        </span>
+                                        </section>
+                                        <% } %>
+
+                                            <% if(productos.componentes1.length===0) {%>
+                                                <% } else { %>
+                                                    <section
+                                                        class="sm:w-11/12 lg:w-full flex flex-col my-4 border-t-gray-300 border-t-[1px]">
+                                                        <h3 class="sm:text-xl lg:text-2xl mt-4">
+                                                            Componentes
+                                                        </h3>
+                                                        <ol class="my-6 list-disc list-inside">
+
+                                                            <% if(productos.componentes1.length===0) {%>
+                                                                <% } else { %>
+                                                                    <li class="my-4">
+                                                                        <%= productos.componentes1%>
+                                                                    </li>
+                                                                    <% } %>
+
+                                                                        <% if(productos.componentes2.length===0) {%>
+                                                                            <% } else { %>
+                                                                                <li class="my-4">
+                                                                                    <%= productos.componentes2%>
+                                                                                </li>
+                                                                                <% } %>
+
+                                                                                    <% if(productos.componentes3.length===0)
+                                                                                        {%>
+                                                                                        <% } else { %>
+                                                                                            <li class="my-4">
+                                                                                                <%=
+                                                                                                    productos.componentes3%>
+                                                                                            </li>
+                                                                                            <% } %>
+
+                                                                                                <% if(productos.componentes4.length===0)
+                                                                                                    {%>
+                                                                                                    <% } else { %>
+                                                                                                        <li
+                                                                                                            class="my-4">
+                                                                                                            <%=
+                                                                                                                productos.componentes4%>
+                                                                                                        </li>
+                                                                                                        <% } %>
+
+                                                                                                            <% if(productos.componentes5.length===0)
+                                                                                                                {%>
+                                                                                                                <% } else
+                                                                                                                    { %>
+                                                                                                                    <li
+                                                                                                                        class="my-4">
+                                                                                                                        <%=
+                                                                                                                            productos.componentes5%>
+                                                                                                                    </li>
+                                                                                                                    <% }
+                                                                                                                        %>
+                                                        </ol>
+                                                    </section>
+                                                    <% } %>
+
+
+                                                        <% if(productos.tipodepiel.length===0 &&
+                                                            productos.cantidad.length===0 &&
+                                                            productos.duracion.length===0 &&
+                                                            productos.reciclable.length===0) {%>
+                                                            <% } else { %>
+                                                                <section class="sm:w-11/12 lg:w-full flex">
+                                                                    <div class="relative shadow-lg rounded-lg">
+                                                                        <table
+                                                                            class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                                            <tbody>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Tipo de piel
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.tipodepiel%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Cantidad
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.cantidad%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Duración
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.duracion%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Envase reciclable
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.reciclable%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </section>
+                                                                <% } %>
+            </article>
+        </main>
+
+        <% } else {%>
+            <main
+                class="bg-mainLight sm:w-full lg:w-5/6 lg:px-10 lg:py-6 px-4 py-4 lg:my-10 lg:rounded-lg flex flex-col">
+                <article class="overflow-hidden flex flex-col items-center">
+                    <div class="lg:flex lg:w-full lg:flex-row flex sm:flex-col">
+
+                        <div class="sm:order-1 lg:hidden">
+                            <span class="w-11/12 uppercase text-left text-xs text-gray-400 h-8">
+                                Categoría: <a href="/productos/<%= productos.categoria %> ">
+                                    <%= productos.categoria %>
+                                </a>
+                            </span>
+                            <h1 class="text-textLight w-11/12 text-left text-2xl font-light mb-2">
+                                <%=productos.nombre %>
+                            </h1>
+                        </div>
+
+
+                        <div class="order-2 lg:order-2 lg:min-w-[380px]">
+                            <div class="divdos sm:hidden lg:block lg:order-2">
+                                <span class="w-11/12 uppercase text-left text-xs text-gray-400 h-8">
+                                    Categoría: <a href="/productos/<%= productos.categoria %> ">
+                                        <%= productos.categoria %>
+                                    </a>
+                                </span>
+                                <h1
+                                    class="text-textLight w-max text-left lg:font-bold text-3xl sm:font-light mt-4 mb-2">
+                                    <%=productos.nombre %>
+                                </h1>
+                            </div>
+
+                            <div class="lg:order-3">
+                                <header class="w-full flex flex-col justify-start items-center">
+                                    <div class="sm:w-11/12 lg:w-full flex lg:flex-col justify-between">
+                                        <% if (productos.precio_oferta) {%>
+                                        <div>
+                                            <span
+                                                class="text-gray-500 text-xl flex flex-col  sm:text-xl lg:font-normal items-start mt-8 mb-2 font-thin sm:w-11/12 lg:w-full">
+                                                <span class="text-gray-500 line-through">$&nbsp; <%=productos.precio %>
+                                                        </span>
+                                                <span
+                                                    class="text-textLight text-3xl w-max sm:text-4xl lg:font-normal flex items-center mb-2 sm:font-light sm:w-max lg:w-full">
+                                                    <span class="">$&nbsp;</span>
+                                                    <%=productos.precio_oferta %>
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-6 w-6 ml-4 mt-2 " fill="none" viewBox="0 0 24 24"
+                                                            stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                        </svg>
+                                                        <% var precio=parseInt(100 - (productos.precio_oferta *100)/productos.precio) %>
+                                                            <span class="text-xl ml-12 w-max absolute left-32 lg:left-0 lg:relative lg:w-max text-green-400">
+                                                                <%=precio%>% OFF
+                                                            </span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <span
+                                            class="px-2 font-semibold py-1 hidden lg:block bg-marronBg w-max sm:h-max rounded-lg text-sm text-mainLight">OFERTA!</span>
+                                        <% } else { %>
+
+                                            <span
+                                                class="text-textLight text-3xl sm:text-4xl lg:font-normal flex items-center mt-8 mb-2 sm:font-light sm:w-11/12 lg:w-full">
+                                                <span class="">$&nbsp;</span>
+                                                <%=productos.precio %>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-4 mt-2 "
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                        stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                    </svg>
+                                            </span>
+                                            <% } %>
+                                                <span
+                                                    class="text-right lg:text-left w-full flex sm:flex-col sm:items-end lg:flex-row text-green-400 text-lg font-normal mt-8 mb-2">
+                                                    Producto disponible
+                                                    <% if (productos.precio_oferta) {%>
+                                                        <span
+                                                            class="px-2 lg:hidden font-semibold py-1 text-right bg-marronBg w-max sm:h-max rounded-lg text-lg text-mainLight">OFERTA!</span>
+                                                        <% } else { %>
+                                                            <% } %>
+                                                </span>
+                                    </div>
+                                </header>
+
+
+
+                                <footer class="lg:w-full sm:w-full my-6">
+                                    <button type="submit" disabled name="addtocart" id="addtocart"
+                                        class="rounded-lg p-2.5 disabled:bg-red-200 text-red-800 w-full focus:bg-marronBg hover:bg-marronBg cursor-pointer">
+                                        Producto sin stock
+                                    </button>
+                                    <br>
+                                </footer>
+                            </div>
+                        </div>
+
+                        <div class="divuno order-1 lg:order-1">
+                            <figure class="lg:w-11/12 md:flex md:justify-center sm:w-full lg:max-w-[570px]">
+                                <img class="block w-[552px] h-96 object-cover shadow-md rounded-lg"
+                                    src="/images/productos/subidosporweb/<%=productos.imagen%>"
+                                    alt="<%=productos.alternative%>">
+                            </figure>
+                        </div>
+                    </div>
+
+                    <% if(productos.descripcionlarga===0) {%>
+                        <% } else { %>
+                            <section class="sm:w-11/12 lg:w-full flex flex-col my-8">
+                                <h3 class="sm:text-xl lg:text-2xl mt-4">
+                                    Descripción del producto
+                                </h3>
+                                <span class="my-6">
+                                    <%= productos.descripcionlarga%>
+                                </span>
+                            </section>
+                            <% } %>
+
+
+                                <% if(productos.modouso.length===0) {%>
+                                    <% } else { %>
+                                        <section
+                                            class="sm:w-11/12 lg:w-full flex flex-col my-4 border-t-gray-300 border-t-[1px]">
+                                            <h3 class="sm:text-xl lg:text-2xl mt-4">
+                                                Modo de uso
+                                            </h3>
+                                            <span class="my-6">
+                                                <%= productos.modouso%>
+                                            </span>
+                                        </section>
+                                        <% } %>
+
+                                            <% if(productos.componentes1.length===0) {%>
+                                                <% } else { %>
+                                                    <section
+                                                        class="sm:w-11/12 lg:w-full flex flex-col my-4 border-t-gray-300 border-t-[1px]">
+                                                        <h3 class="sm:text-xl lg:text-2xl mt-4">
+                                                            Componentes
+                                                        </h3>
+                                                        <ol class="my-6 list-disc list-inside">
+
+                                                            <% if(productos.componentes1.length===0) {%>
+                                                                <% } else { %>
+                                                                    <li class="my-4">
+                                                                        <%= productos.componentes1%>
+                                                                    </li>
+                                                                    <% } %>
+
+                                                                        <% if(productos.componentes2.length===0) {%>
+                                                                            <% } else { %>
+                                                                                <li class="my-4">
+                                                                                    <%= productos.componentes2%>
+                                                                                </li>
+                                                                                <% } %>
+
+                                                                                    <% if(productos.componentes3.length===0)
+                                                                                        {%>
+                                                                                        <% } else { %>
+                                                                                            <li class="my-4">
+                                                                                                <%=
+                                                                                                    productos.componentes3%>
+                                                                                            </li>
+                                                                                            <% } %>
+
+                                                                                                <% if(productos.componentes4.length===0)
+                                                                                                    {%>
+                                                                                                    <% } else { %>
+                                                                                                        <li
+                                                                                                            class="my-4">
+                                                                                                            <%=
+                                                                                                                productos.componentes4%>
+                                                                                                        </li>
+                                                                                                        <% } %>
+
+                                                                                                            <% if(productos.componentes5.length===0)
+                                                                                                                {%>
+                                                                                                                <% } else
+                                                                                                                    { %>
+                                                                                                                    <li
+                                                                                                                        class="my-4">
+                                                                                                                        <%=
+                                                                                                                            productos.componentes5%>
+                                                                                                                    </li>
+                                                                                                                    <% }
+                                                                                                                        %>
+                                                        </ol>
+                                                    </section>
+                                                    <% } %>
+
+
+                                                        <% if(productos.tipodepiel.length===0 &&
+                                                            productos.cantidad.length===0 &&
+                                                            productos.duracion.length===0 &&
+                                                            productos.reciclable.length===0) {%>
+                                                            <% } else { %>
+                                                                <section class="sm:w-11/12 lg:w-full flex">
+                                                                    <div class="relative shadow-lg rounded-lg">
+                                                                        <table
+                                                                            class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                                            <tbody>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Tipo de piel
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.tipodepiel%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Cantidad
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.cantidad%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Duración
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.duracion%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    class="border-b border-gray-200 dark:border-gray-700">
+                                                                                    <th scope="row"
+                                                                                        class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                                        Envase reciclable
+                                                                                    </th>
+                                                                                    <td class="py-4 px-6">
+                                                                                        <%= productos.reciclable%>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </section>
+                                                                <% } %>
+                </article>
+            </main>
+            <% } %>
+                <section
+                    class="sm:w-full lg:w-5/6 lg:rounded-lg lg:mb-10 bg-mainLight border-t-gray-300 border-t-[1px]">
+                    <h3 class="text-left p-4 text-lg ">Preguntas y respuestas</h3>
+                    <div class="preguntas">
+                        <h3 class="text-xl text-left p-4 font-medium">Últimas preguntas</h3>
+                        <% if(preguntas.length>= 1) {%>
+                            <% preguntas.forEach(function(pregunta){ %>
+                                <div class="mb-1 px-4 py-2 relative">
+                                    <div class="flex items-center justify-between">
+                                        <div class="pregunta flex flex-col">
+                                            <div class="flex relative items-center">
+                                                <p class="text-base py-2 text-left first-letter:uppercase">
+                                                    <%= pregunta.comentario_text%>
+                                                </p>
+                                                <% if(admin===undefined) {%>
+                                                    <% } else { %>
+                                                        <% if(admin.loggedIn===true) {%>
+                                                            <span
+                                                                class="text-xs absolute left-0 text-blue-400 top-[-7px]">
+                                                                <%= pregunta.comentario_fecha %>
+                                                            </span>
+                                                            <% } else { %>
+
+                                                                <% } %>
+                                                                    <% } %>
+                                                                        <% if(admin===undefined) {%>
+                                                                            <% } else { %>
+                                                                                <% if(admin.loggedIn===true) {%>
+                                                                                    <div
+                                                                                        class="text-sm absolute top-[-8px] left-[45px] w-max">
+                                                                                        <form class="eliminar-preg"
+                                                                                            action="/productos/pregunta/eliminar"
+                                                                                            method="post">
+                                                                                            <input type="hidden"
+                                                                                                name="comentario_id"
+                                                                                                value="<%= pregunta.comentario_id %>">
+                                                                                            <input type="hidden"
+                                                                                                name="producto_id"
+                                                                                                value="<%= productos.id %>">
+                                                                                            <input type="hidden"
+                                                                                                name="categoria"
+                                                                                                value="<%= productos.categoria %>">
+                                                                                            <button type="submit"
+                                                                                                class="text-red-400 mr-2">Eliminar
+                                                                                                pregunta</button>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <% } else { %>
+
+                                                                                        <% } %>
+                                                                                            <% } %>
+                                            </div>
+                                            <div class="respuesta ml-6 relative">
+                                                <% respuestas.forEach(function(respuesta){%>
+                                                    <% if(pregunta.comentario_id===respuesta.padre_id){ %>
+                                                        <svg class="absolute left-[-13px] h-[20px] w-[20px]">
+                                                            <path fill="#000" fill-opacity=".25" fill-rule="evenodd"
+                                                                d="M0 0h1v11h11v1H0z"></path>
+                                                        </svg>
+                                                        <p
+                                                            class="ml-1 mb-1 text-[rgba(0,0,0,.55)] first-letter:uppercase">
+                                                            <%= respuesta.respuesta_text %>. <br>
+                                                                <span class="text-sm">~<i>Bouvier Artesanal.</i></span>
+                                                        </p>
+                                                        <% if(admin===undefined) {%>
+                                                            <% } else { %>
+                                                                <% if(admin.loggedIn===true) {%>
+                                                                    <div class="eliminar-rta">
+                                                                        <form
+                                                                            action="/productos/pregunta/eliminarrespuesta"
+                                                                            method="post">
+                                                                            <input type="hidden" name="producto_id"
+                                                                                value="<%= productos.id%>">
+                                                                            <input type="hidden" name="categoria"
+                                                                                value="<%= productos.categoria%>">
+                                                                            <input type="hidden" name="respuesta_id"
+                                                                                value="<%= respuesta.respuesta_id%>">
+                                                                            <input type="hidden" name="padre_id"
+                                                                                value="<%= respuesta.padre_id%>">
+                                                                            <button type="submit"
+                                                                                class="text-red-600">Eliminar
+                                                                                respuesta</button>
+                                                                        </form>
+                                                                    </div>
+                                                                    <% } else { %>
+
+                                                                        <% } %>
+                                                                            <% } %>
+
+                                                                                <% } %>
+                                                                                    <% }) %>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <% if(pregunta.comentario_respondido===0) {%>
+
+                                    <% if(admin===undefined) {%>
+                                        <% } else { %>
+                                            <% if(admin.loggedIn===true) {%>
+                                                <div class="w-full pl-12 pr-8">
+                                                    <form action="/productos/pregunta/responder" method="post">
+                                                        <div
+                                                            class="w-full flex flex-col min-w-[200px] max-w-[550px] my-4">
+                                                            <textarea name="respuesta_text" id="" cols="30"
+                                                                class="w-full h-24 rounded-xl border-gray-400 focus:border-marronBg focus:outline-none focus:ring-marronBg resize-none"
+                                                                placeholder="Escribe tu respuesta"></textarea>
+                                                            <input type="hidden" name="padre_id"
+                                                                value="<%=pregunta.comentario_id%>">
+                                                            <input type="hidden" name="id" value="<%=productos.id%>">
+                                                            <input type="hidden" name="categoria"
+                                                                value="<%=productos.categoria%>">
+                                                            <button type="submit"
+                                                                class="w-full my-1 px-4 py-2 bg-gray-400 text-mainLight rounded-lg">
+                                                                Responder
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <% } else { %>
+
+                                                    <% } %>
+                                                        <% } %>
+                    </div>
+                    </div>
+                    <% } %>
+                        <% }) %>
+                            <div class="w-full p-4">
+                                <form action="/productos/pregunta/hacer" method="post">
+                                    <div class="w-full flex flex-col items-center my-4">
+                                        <textarea name="comentario_text" id="" cols="30"
+                                            class="w-full h-24 rounded-xl border-marronBg focus:border-marronBg focus:outline-none focus:ring-marronBg resize-none"
+                                            placeholder="Escribí tu pregunta" minlength="6" required></textarea>
+                                        <input type="hidden" name="categoria" value="<%= productos.categoria %>">
+                                        <input type="hidden" name="comentario_productoid" value="<%=productos.id%>">
+                                        <button type="submit"
+                                            class="w-full my-4 px-4 py-2 bg-marronBg text-mainLight rounded-lg">
+                                            Enviar pregunta
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <% } else { %>
+                                <div class="py-4">
+                                    <p class="px-4 text-md">Nadie hizo preguntas por ahora. ¡Hace la
+                                        primera!</p>
+                                </div>
+                                <div class="w-full p-4">
+                                    <form action="/productos/pregunta/hacer" method="post">
+                                        <div class="w-full flex flex-col items-center my-4">
+                                            <textarea name="comentario_text" id="" cols="30"
+                                                class="w-full h-24 rounded-xl border-marronBg resize-none"
+                                                placeholder="Escribí tu pregunta" required minlength="6"></textarea>
+                                            <input type="hidden" name="comentario_productoid" value="<%=productos.id%>">
+                                            <input type="hidden" name="categoria" value="<%=productos.categoria%>">
+                                            <button type="submit"
+                                                class="w-full my-4 px-4 py-2 bg-marronBg text-mainLight rounded-lg">
+                                                Enviar pregunta
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <% } %>
+                                    </div>
+                </section>
+                <%- include('../templates/footerProductos') %>

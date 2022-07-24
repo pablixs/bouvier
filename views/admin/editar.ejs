@@ -9,7 +9,7 @@
             <%- include('../templates/admin/nav') %>
             <div class="flex overflow-hidden pt-16 bg-mainLight">
                 <aside
-                    class="bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex flex-shrink-0 flex-col"
+                    class="aside hidden md:flex  bg-mainLight border-solid border-[1px] border-[rgba(99,99,99,.2)] w-64 fixed z-20 h-full top-0 left-0 pt-16 flex-shrink-0 flex-col"
                     aria-label="Sidebar">
                     <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
                         <ul class="space-y-2">
@@ -93,7 +93,7 @@
                         </ul>
                     </div>
                 </aside>
-                <div class="main-content ml-64 h-full w-full relative overflow-y-auto">
+                <div class="main-content ml-0 md:ml-64 h-full w-full relative overflow-y-auto">
                     <main>
                         <div class="p-4 flex flex-col justify-between">
                             <nav class="flex mb-4" aria-label="Breadcrumb">
@@ -137,16 +137,52 @@
                                             <input type="hidden" name="id" value="<%=datos[0].id%>">
                                             <div class="mb-6">
                                               <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nombre del producto</label>
-                                              <input type="text" id="nombre" value="<%=datos[0].nombre%> " name="nombre" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500t" required>
+                                              <input type="text" id="nombre" value="<%=datos[0].nombre%> " name="nombre" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500t">
                                             </div>
                                             <div class="mb-6">
                                               <label for="precio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Precio del producto</label>
-                                              <input type="number" id="precio" value="<%=datos[0].precio%>" name="precio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                              <input type="number" id="precio" value="<%=datos[0].precio%>" name="precio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </div>
+                                            <div class="mb-6">
+                                              <label for="precio_oferta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Precio de oferta
+                                                del producto (dejar vacío si no hay ofertas existentes para el producto)</label>
+                                              <input type="number" id="precio_oferta" value="<%=datos[0].precio_oferta%>" name="precio_oferta" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                                             </div>
                                             <div class="mb-6">     
                                                 <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Descripción del producto</label>
                                                 <textarea id="descripcionlarga" name="descripcionlarga" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"><%=datos[0].descripcionlarga %></textarea>
                                             </div>
+
+                                            <div class="mb-6">
+                                                <label for="modouso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Modo de uso</label>
+                                                <textarea name="modouso" id="modouso" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"><%=datos[0].modouso%></textarea>
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 1</label>
+                                                <input type="text" id="componentes1" value="<%=datos[0].componentes1%>" name="componentes1" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 2</label>
+                                                <input type="text" id="componentes2" value="<%=datos[0].componentes2%>" name="componentes2" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 3</label>
+                                                <input type="text" id="componentes3" value="<%=datos[0].componentes3%>" name="componentes3" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 4</label>
+                                                <input type="text" id="componentes4" value="<%=datos[0].componentes4%>" name="componentes4" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label for="componentes5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Componente 5</label>
+                                                <input type="text" id="componentes5" value="<%=datos[0].componentes5%>" name="componentes5" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                                            </div>
+
                                             <div class="mb-6">
                                               <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stock</label>
                                               <input type="number" id="stock" value="<%=datos[0].stock%>" name="stock" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
@@ -155,154 +191,185 @@
                                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="imagen">Imagen del producto</label>       
                                                 <input name="imagen" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="product_image_help" id="imagen" type="file">
                                             </div>
+
+
                                             <div class="mb-6">
                                               <label for="alternative" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Descripción de la imagen</label>
                                               <input type="text" id="alternative" value="<%=datos[0].alternative%>" name="alternative" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                             </div>
+
+                                            <div class="mb-6">
+                                                <div class="relative shadow-lg sm:rounded-lg">
+                                                    <table
+                                                        class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                        <tbody>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                    Tipo de piel
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="tipodepiel"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tipo de piel</label> -->
+                                                                    <input type="text" id="tipodepiel"
+                                                                        name="tipodepiel" value="<%=datos[0].tipodepiel%>"
+                                                                        class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg sm:text-md focus:ring-marronBg focus:border-marronBg"
+                                                                        >
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                    Cantidad
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="cantidad"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cantidad</label> -->
+                                                                    <input type="text" id="cantidad"
+                                                                        name="cantidad" value="<%=datos[0].cantidad%>"
+                                                                        class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg sm:text-md focus:ring-marronBg focus:border-marronBg"
+                                                                        >
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                    Duración
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="duracion"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Duracion</label> -->
+                                                                    <input type="text" id="duracion"
+                                                                        name="duracion" value="<%=datos[0].duracion%>"
+                                                                        class="block w-full p-4 text-gray-900 border bg-bgCardBg border-gray-300 rounded-lg sm:text-md focus:ring-marronBg focus:border-marronBg"
+                                                                        >
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                                <th scope="row"
+                                                                    class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
+                                                                    Envase reciclable
+                                                                </th>
+                                                                <td class="py-4 px-6">
+                                                                    <!-- <label for="reciclabe"
+                                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Reciclable</label> -->
+                                                                        <select id="reciclable" name="reciclable" value="<%=datos[0].reciclable%>"
+                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-marronBg focus:border-marronBg block w-full p-2.5">
+                                                                        <% if (datos[0].reciclable === "Sí") {%>     
+                                                                            <option value="Sí" selected>Sí</option>
+                                                                            <option value="No">No</option>
+                                                                        <% } else {%> 
+                                                                            <option value="Sí">Sí</option>
+                                                                            <option value="No" selected>No</option>
+                                                                        <% } %> 
+                                                                        </select>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
                                             <div class="mb-6">
                                                 <label for="categoria" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Categoría del producto</label>
                                                 <select id="categoria" name="categoria" value="<%= datos[0].categoria%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <!-- <option value="" selected disabled><%# datos[0].categoria%> </option> -->
                                 
                                                     <% if (datos[0].categoria === "jabones") {%> 
-                                                        <option value="jabones" selected>Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones" selected>Jabones</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "cremas") { %> 
-                                                        <option value="jabones">Jabones</option>
+                                                        <option value="capilares">Capilares</option>
                                                         <option value="cremas" selected>Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
-                                                        <option value="capilares">Capilares</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
-                                                        <option value="limpiadores">Limpiadores</option>
-                                                        <option value="mascarillas">Mascarillas</option>
-                                                        <option value="otros">Otros</option>
-                                                        <option value="serum">Serum</option>
-                                                        <option value="tonicos">Tonicos</option>
-                                                    <% } else if (datos[0].categoria === "bano-nutricion-tratamiento") { %> 
                                                         <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento" selected>Baño de nutrición / tratamiento</option>
-                                                        <option value="capilares">Capilares</option>
-                                                        <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "capilares") { %> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
-                                                        <option value="capilares" selected>Capilares</option>
+                                                        <option value="capilares">Capilares</option>
+                                                        <option value="cremas" selected>Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones">Jabones</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "exfoliantes") { %> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes" selected>Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
-                                                        <option value="limpiadores">Limpiadores</option>
-                                                        <option value="mascarillas">Mascarillas</option>
-                                                        <option value="otros">Otros</option>
-                                                        <option value="serum">Serum</option>
-                                                        <option value="tonicos">Tonicos</option>
-                                                    <% } else if (datos[0].categoria === "jabones-liquidos") { %> 
                                                         <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
-                                                        <option value="capilares">Capilares</option>
-                                                        <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos" selected>Jabones liquidos</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "limpiadores") { %> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones">Jabones</option>
                                                         <option value="limpiadores" selected>Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "mascarillas") { %> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones">Jabones</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas" selected>Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "otros") { %> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones">Jabones</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
-                                                        <option value="otros" selected>Otros</option>
-                                                        <option value="serum">Serum</option>
+                                                        <option value="otros">Otros</option>
+                                                        <option value="serum" selected>Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "serum") { %> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones">Jabones</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum" selected>Serum</option>
                                                         <option value="tonicos">Tonicos</option>
                                                     <% } else if (datos[0].categoria === "tonicos") { %> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones" selected>Jabones</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos" selected>Tonicos</option>
                                                     <% } else {%> 
-                                                        <option value="jabones">Jabones</option>
-                                                        <option value="cremas">Cremas</option>
-                                                        <option value="bano-nutricion-tratamiento">Baño de nutrición / tratamiento</option>
                                                         <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
-                                                        <option value="jabones-liquidos">Jabones liquidos</option>
+                                                        <option value="jabones">Jabones</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -313,8 +380,8 @@
                                                 </select>
                                             </div>
                                     
-                                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Editar producto</button>
-                                            <a href="/admin/productos" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Volver</a>
+                                            <button type="submit" class="text-white bg-marronBg hover:bg-marronDark focus:ring-4 focus:outline-none focus:ring-marronDark font-medium rounded-lg text-sm px-5 py-2.5 text-center">Editar producto</button>
+                                            <a href="/admin/productos" class="text-marronBg border-solid border-marronBg border-2 hover:bg-marronBg hover:text-white focus:ring-4 focus:outline-none focus:ring-marronDark font-medium rounded-lg text-sm px-5 py-2.5 text-center">Volver</a>
                                         </form>
 
                                 </div>
@@ -326,5 +393,5 @@
         </body>
     </body>
 </body>
-<script src="/javascripts/index.js"></script>
+<script src="/javascripts/admin.js"></script>
 <%- include('../templates/footer') %>

@@ -1,19 +1,21 @@
-// Localhost connect
 var mysql = require('mysql');
+// Localhost connect
 var con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'bouvier'
+    database: 'bouvier',
+    multipleStatements: true
 });
 
 // Wiz connect
 // var mysql = require('mysql');
 // var con = mysql.createConnection({
 //     host: 'localhost',
-//     user: 'bouviera_bouvier',
+//     user: 'bouviera_aye',
 //     password: 'hachigatsujuunana147258',
-//     database: 'bouviera_bouvier'
+//     database: 'bouviera_bouvier',
+//     multipleStatements: true
 // });
 
 
@@ -24,6 +26,7 @@ var con = mysql.createConnection({
 //     password: '927b421b',
 //     database: 'heroku_f0d84c64f510881'
 // });
+
 
 con.connect(
     (err)=>{

@@ -9,4 +9,3 @@ hamburger.addEventListener("click", function() {
   screendarker.classList.toggle("hidden")
   // Do something else, like open/close menu
 });
-

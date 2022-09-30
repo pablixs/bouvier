@@ -5,11 +5,8 @@ const indexController = require('../controllers/indexController')
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  console.log(req.session)
-  res.render('index', { title: 'Bouvier Artesanal - Cosmética natural' });
-});
 
+router.get('/',indexController.getIndex)
 // router.get('/sitemap.xml',generateSitemap)
 
 

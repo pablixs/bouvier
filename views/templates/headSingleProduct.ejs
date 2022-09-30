@@ -15,23 +15,23 @@
     <title>
         <%= title %>
     </title>
+    <link rel="canonical" href="https://bouvierartesanal.com/productos/<%= productos.categoria %>/<%= productos.id %>?">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/stylesheets/output.css">
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="/stylesheets/hamburguer.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L59D76Y09T"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-234715693-1">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-L59D76Y09T');
-    </script>
+    gtag('config', 'UA-234715693-1');
+  </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org/",
@@ -47,7 +47,11 @@
           "@type": "Offer",
           "url": "https://www.bouvierartesanal.com.ar/productos/<%=productos.categoria%>/<%=productos.id%>",
           "priceCurrency": "ARS",
-          "price": "<%=productos.precio%>",
+          <% if (productos.precio_oferta) {%>
+            "price": "<%=productos.precio_oferta%>",
+            <% } else { %>
+            "price": "<%=productos.precio%>",
+          <% } %>  
           "priceValidUntil": "2022-07-29",
           "itemCondition": "https://schema.org/UsedCondition",
           "availability": "https://schema.org/InStock"

@@ -424,7 +424,7 @@ module.exports = {
                     })
                     console.log("categoria: "+productos.categoria)
                 } catch (error) {
-                    console.log("Error en EJS: " + error)
+                    console.log("Error en EJS: " + er)
                     res.render('productsError', {
                         title: 'Error - Bouvier Artesanal'
                     });
@@ -455,7 +455,6 @@ module.exports = {
                         admin:adminLog,
                         title: registros[0].nombre + " - Bouvier Artesanal"
                     })
-                    console.log("categoria: "+productos.categoria)
                 } catch (error) {
                     console.log("Error en EJS: " + error)
                     res.render('productsError', {

@@ -206,8 +206,7 @@
                                                             <tr class="border-b border-gray-200 dark:border-gray-700">
                                                                 <th scope="row"
                                                                     class="py-4 px-6 bg-bgCardBg font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
-                                                                    Tipo de piel
-                                                                </th>
+                                                                    Tipo de <input type="text" name="tipode" value="<%=datos[0].tipode%>" class="p-4 text-gray-900 border border-gray-300 rounded-lg sm:text-md focus:ring-marronBg focus:border-marronBg" required>
                                                                 <td class="py-4 px-6">
                                                                     <!-- <label for="tipodepiel"
                                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tipo de piel</label> -->
@@ -280,6 +279,7 @@
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones" selected>Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -290,6 +290,7 @@
                                                         <option value="cremas" selected>Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -300,6 +301,7 @@
                                                         <option value="cremas" selected>Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -310,6 +312,7 @@
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes" selected>Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -320,6 +323,7 @@
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores" selected>Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -330,6 +334,7 @@
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas" selected>Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -340,6 +345,7 @@
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -350,6 +356,7 @@
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
@@ -360,16 +367,29 @@
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones" selected>Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>
                                                         <option value="serum">Serum</option>
                                                         <option value="tonicos" selected>Tonicos</option>
+                                                    <% } else if (datos[0].categoria === "kits") { %> 
+                                                        <option value="capilares">Capilares</option>
+                                                        <option value="cremas">Cremas</option>
+                                                        <option value="exfoliantes">Exfoliantes</option>
+                                                        <option value="jabones">Jabones</option>
+                                                        <option value="kits" selected>Kits</option>
+                                                        <option value="limpiadores">Limpiadores</option>
+                                                        <option value="mascarillas">Mascarillas</option>
+                                                        <option value="otros">Otros</option>
+                                                        <option value="serum">Serum</option>
+                                                        <option value="tonicos">Tonicos</option>
                                                     <% } else {%> 
                                                         <option value="capilares">Capilares</option>
                                                         <option value="cremas">Cremas</option>
                                                         <option value="exfoliantes">Exfoliantes</option>
                                                         <option value="jabones">Jabones</option>
+                                                        <option value="kits">Kits</option>
                                                         <option value="limpiadores">Limpiadores</option>
                                                         <option value="mascarillas">Mascarillas</option>
                                                         <option value="otros">Otros</option>

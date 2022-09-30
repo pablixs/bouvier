@@ -254,7 +254,7 @@
                                                             </td>
                                                             <td class="px-4 py-4 text-center">
                                                                 <form action="/admin/pedidos/eliminar" method="post">
-                                                                    <input type="hidden" name="id" value="<%= datos[dato].id %>">
+                                                                    <input type="hidden" name="id_2" value="<%= datos[dato].id %>">
                                                                     <button class="font-medium p-2 rounded-xl bg-red-500 text-redlight hover:bg-red-700 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
                                                                 </form>
                                                             </td>
@@ -332,7 +332,8 @@
                                                                 <%= datos[dato].fecha %> 
                                                             </td>
                                                             <td class="px-4 py-4 text-center">
-                                                                <form action="/admin/eliminar/<%= datos[dato].id %> " method="post">
+                                                                <form action="/admin/pedidos/eliminar" method="post">
+                                                                    <input type="hidden" name="id_2" value="<%= datos[dato].id %>" id="">
                                                                     <button class="font-medium p-2 rounded-xl bg-red-500 text-redlight hover:bg-red-700 hover:text-red-200 shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
                                                                 </form>
                                                             </td>
@@ -410,7 +411,8 @@
                                                                 <%= datos[dato].fecha %> 
                                                             </td>
                                                             <td class="px-4 py-4 text-center">
-                                                                <form action="/admin/eliminar/<%= datos[dato].id %> " method="post">
+                                                                <form action="/admin/pedidos/eliminar" method="post">
+                                                                    <input type="hidden" name="id_2" value="<%= datos[dato].id %>">
                                                                     <button class="font-medium p-2 rounded-xl bg-red-500 hover:bg-red-700 text-redlight shadow-sm" type="submit"><i class="fa-solid fa-trash-can"></i></button>
                                                                 </form>
                                                             </td>

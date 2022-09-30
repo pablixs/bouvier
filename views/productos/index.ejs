@@ -1,123 +1,173 @@
-<%- include('../templates/headProductos') %> 
-    <main class="w-full p-4 flex justify-center items-center bg-bgCardBg">
-        <h1 class="hidden">Productos</h1>
-        <div class="w-full">    
-            <div class="lg:container sm:max-w-full mx-auto">
-                <div class="flex flex-wrap items-center justify-center">
-                    <a href="/productos/jabones" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <figure class="absolute overflow-hidden left-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/jabones-general-01.webp" class="w-full h-full object-cover" alt="Categoría jabones">
-                            </figure>
-                        </div>
-                        <h2 class="ml-20 text-2xl font-thin">
-                            Jabones
-                        </h2>
-                    </a>
+<!DOCTYPE html>
+<html lang="es">
 
-                    <a href="/productos/cremas" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden right-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/crema.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="mr-20 text-2xl font-thin">
-                            Cremas
-                        </h2>
-                    </a>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Nuestra categoría de productos. Una amplia categoría de productos naturales, 100% libre de químicos y artesanales.">
+    <meta name="keywords"
+        content="cosmetica natural, cosmetica ecologica, cosmetica natural jabones, jabones artesanales, bouvier artesanal, cosmetica natural online, productos artesanales">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="Spanish">
+    <link rel="shortcut icon" href="/images/logos/favicon.ico" type="image/x-icon">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="canonical" href="https://www.bouvierartesanal.com.ar/productos" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/stylesheets/output.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="/stylesheets/hamburguer.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L59D76Y09T"></script>
+</head>
 
-                    <a href="/productos/capilares" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden left-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/capilares.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="ml-20 text-2xl font-thin">
-                            Capilares
-                        </h2>
-                    </a>
+<body class="bg-bgCardBg flex flex-col items-center">
+    <%- include('../templates/nav') %>
+        <main class="w-full p-4 flex justify-center items-center bg-bgCardBg">
+            <h1 class="hidden">Productos</h1>
+            <div class="w-full">
+                <div class="lg:container sm:max-w-full mx-auto">
+                    <div class="flex flex-wrap items-center justify-center">
+                        <a href="/productos/jabones"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <figure class="absolute overflow-hidden left-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/jabones-general-01.webp"
+                                        class="w-full h-full object-cover" alt="Categoría jabones">
+                                </figure>
+                            </div>
+                            <h2 class="ml-20 text-2xl font-thin">
+                                Jabones
+                            </h2>
+                        </a>
 
-                    <a href="/productos/limpiadores" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden right-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/limpiadores.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="mr-20 text-2xl font-thin">
-                            Limpiadores
-                        </h2>
-                    </a>
+                        <a href="/productos/cremas"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden right-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/crema.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="mr-20 text-2xl font-thin">
+                                Cremas
+                            </h2>
+                        </a>
 
-                    <a href="/productos/mascarillas" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden left-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/mascarillas.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="ml-20 text-xl font-thin">
-                            Mascarillas
-                        </h2>
-                    </a>
+                        <a href="/productos/capilares"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden left-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/capilares.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="ml-20 text-2xl font-thin">
+                                Capilares
+                            </h2>
+                        </a>
 
-                    <a href="/productos/otros" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden right-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/otros.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="mr-20 text-2xl font-thin">
-                            Otros
-                        </h2>
-                    </a>
+                        <a href="/productos/limpiadores"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden right-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/limpiadores.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="mr-20 text-2xl font-thin">
+                                Limpiadores
+                            </h2>
+                        </a>
+
+                        <a href="/productos/mascarillas"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden left-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/mascarillas.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="ml-20 text-xl font-thin">
+                                Mascarillas
+                            </h2>
+                        </a>
+
+                        <a href="/productos/otros"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden right-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/otros.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="mr-20 text-2xl font-thin">
+                                Otros
+                            </h2>
+                        </a>
 
 
-                    <a href="/productos/serum" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden left-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/serum.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="ml-20 text-xl font-thin">
-                            Serum
-                        </h2>
-                    </a>
+                        <a href="/productos/serum"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden left-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/serum.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="ml-20 text-xl font-thin">
+                                Serum
+                            </h2>
+                        </a>
 
-                    <a href="/productos/tonicos" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden right-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/tonicos.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="mr-20 text-2xl font-thin">
-                            Tonicos
-                        </h2>
-                    </a>
+                        <a href="/productos/tonicos"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden right-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/tonicos.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="mr-20 text-2xl font-thin">
+                                Tonicos
+                            </h2>
+                        </a>
 
-                    <a href="/productos/exfoliantes" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden left-0 w-24 h-full">
-                                <img src="images/productos/subidosporweb/1657462657080_crema-exfoliante.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="ml-20 text-xl font-thin">
-                            Exfoliantes
-                        </h2>
-                    </a>
+                        <a href="/productos/exfoliantes"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden left-0 w-24 h-full">
+                                    <img src="images/productos/subidosporweb/1657462657080_crema-exfoliante.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="ml-20 text-xl font-thin">
+                                Exfoliantes
+                            </h2>
+                        </a>
 
-                    <a href="/productos/kits" class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                        <div class="flex items-center">
-                            <picture class="absolute overflow-hidden right-0 w-24 h-full">
-                                <img src="images/productos/backgrounds/tonicos.webp" class="w-full h-full object-cover" alt="">
-                            </picture>
-                        </div>
-                        <h2 class="mr-20 text-2xl font-thin">
-                            Kits
-                        </h2>
-                    </a>
+                        <a href="/productos/kits"
+                            class="flex overflow-hidden mx-4 relative p-6 my-2 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <picture class="absolute overflow-hidden right-0 w-24 h-full">
+                                    <img src="images/productos/backgrounds/tonicos.webp"
+                                        class="w-full h-full object-cover" alt="">
+                                </picture>
+                            </div>
+                            <h2 class="mr-20 text-2xl font-thin">
+                                Kits
+                            </h2>
+                        </a>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-    
-<%- include('../templates/footerProductos') %> 
+        </main>
+
+        <%- include('../templates/footerProductos') %>

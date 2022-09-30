@@ -18,6 +18,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app
 
 app.use(session({
   secret:"Hachigatsujuunana147258",
@@ -45,6 +46,7 @@ app.use('/productos', productosRouter);
 app.use('/carrito',carritoRouter)
 app.use('/admin',adminRouter)
 app.get('/sitemap.xml', generate_sitemap)
+
 
 
 // catch 404 and forward to error handler

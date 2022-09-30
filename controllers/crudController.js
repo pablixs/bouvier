@@ -93,7 +93,8 @@ module.exports = {
         })
     },
     pedidosEliminar: (req,res)=>{
-        Crud.eliminarPedidoPorId(con,req.body,function(err,registros){
+        Crud.eliminarPedidoPorId(con,req.body.id_2,function(err,registros){
+            console.log("body: "+nashe)
             res.redirect('/admin/pedidos')
         })
     },

@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./views/**/*.ejs'],
+  content: [
+    './views/**/*.ejs',
+    './node_modules/flowbite/**/*.js'
+  ],
   theme: {
-    colors:{
+    colors: {
       mainLight: '#f7f7f7',
       bgLight: '#dbdbdb',
       bgCardBg: '#e8e8e8',
@@ -35,18 +38,28 @@ module.exports = {
       },
       keyframes: {
         bounce: {
-          '0%': { transform: 'translateY(0px)'},
-          '100%': { transform: 'translateY(0px)' }
+          '0%': {
+            transform: 'translateY(0px)'
+          },
+          '100%': {
+            transform: 'translateY(0px)'
+          }
         },
         nashe: {
-          '0%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-15px)' },
-          '100%': { transform: 'translateY(0px)' },
+          '0%': {
+            transform: 'translateY(0px)'
+          },
+          '50%': {
+            transform: 'translateY(-15px)'
+          },
+          '100%': {
+            transform: 'translateY(0px)'
+          },
         }
       }
     },
   },
   plugins: [
-    require('flowbite/plugin')
-  ],
+    require('flowbite/plugin','@tailwindcss/aspect-ratio')
+  ]
 }

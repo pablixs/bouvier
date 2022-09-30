@@ -8,8 +8,8 @@ var borrar = require('fs')
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'pablicjs@gmail.com',
-    pass: 'bicjjwvrsatsfsrh'
+    user: 'bouvier.artesanal@gmail.com',
+    pass: 'biforafkjzbbwnam'
   }
 })
 
@@ -136,10 +136,15 @@ module.exports = {
   },
   checkout: function (req, res, next) {
     var total = req.session.total
-    res.render('menus/checkout', {
-      title: 'Finalizar pedido - Bouvier Artesanal',
-      total: total
-    })
+    console.log(total)
+    if(total === undefined || total === 0){
+      res.redirect('/carrito')
+    }else{
+      res.render('menus/checkout', {
+        title: 'Finalizar pedido - Bouvier Artesanal',
+        total: total
+      })
+    }
   },
   placeOrder: (req, res) => {
 

@@ -1,11 +1,22 @@
 <%- include('templates/head') %>
+    <link rel="canonical" href="https://bouvierartesanal.com">
     <link rel="stylesheet" href="stylesheets/output.css">
     <link rel="stylesheet" href="stylesheets/hamburguer.css">
-
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/swiper.css">
     </head>
 
-    <body class="bg-mainLight h-screen scroll-smooth">
+    <body class="bg-mainLight overflow-hidden scroll-smooth" id="body">
 
+        <div class="w-full bg-mainLight z-[120] fixed h-screen flex items-center justify-center ease-out" id="loader">
+
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
         <%- include('templates/nav') %>
             <section class="bg-mainLight relative overflow-hidden">
                 <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -20,7 +31,7 @@
                             Tu alternativa más saludable a la hora del cuidado diario de la piel y cabello.
                         </p>
                         <div>
-                            <a href="/productos"
+                            <a href="https://bouvierartesanal.com.ar/productos"
                                 class="inline-flex items-center sm:my-6 justify-center px-5 py-3 mr-3 text-base font-medium text-center text-mainLight rounded-lg bg-marronBg hover:bg-marronDark focus:ring-4 focus:ring-marronBg">Ver
                                 productos
                                 <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
@@ -41,6 +52,93 @@
                     </div>
                 </div>
             </section>
+
+            <section>
+                <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
+                    <h2 class="text-2xl font-bold">
+                        Jabones
+                      </h2>
+              
+                  <div class="mt-8 swiper relative">
+                    <ul class="swiper-wrapper py-4">
+                        <% for(let jabonesList=0; jabonesList < jabones.length; jabonesList++) { %>
+                            <li class="swiper-slide hover:shadow-2xl hover:-translate-y-2 px-2 py-4 rounded-xl border-[rgba(161,136,127,1)] border-[1px] ">
+                                <a
+                                  href="https://bouvierartesanal.com.ar/productos/<%= jabones[jabonesList].categoria %>/<%= jabones[jabonesList].id %>"
+                                  class="relative  block border border-gray-100"
+                                >
+
+                                  <img
+                                    loading="lazy"
+                                    alt="Build Your Own Drone"
+                                    class="object-contain rounded-xl m-auto h-56 lg:h-72"
+                                    src="/images/productos/subidosporweb/<%= jabones[jabonesList].imagen %>"
+                                  />
+                    
+                                  <div class="p-6">
+                    
+                                    <h5 class="mt-4 text-lg font-bold">
+                                        <%= jabones[jabonesList].nombre %>
+                                    </h5>
+
+                                    <a href="https://bouvierartesanal.com.ar/productos/<%= jabones[jabonesList].categoria %> " class="mt-2 text-sm font-normal uppercase hover:text-marronDark">
+                                        <%= jabones[jabonesList].categoria %>
+                                    </a>
+                    
+                                    <p class="mt-2 text-sm font-medium text-gray-600">
+                                      $<%= jabones[jabonesList].precio %>
+                                    </p>
+                    
+                                    <button
+                                      name="add"
+                                      type="button"
+                                      class="flex rounded-xl items-center justify-center w-full px-8 py-4 mt-4 bg-marronBg"
+                                    >
+                                      <span class="text-sm text-white font-medium">
+                                        Ver producto
+                                      </span>
+                                    </button>
+                                  </div>
+                                </a>
+                            </li>
+                        <% } %>
+              
+                      
+                    </ul>
+                    
+
+                    <div class="mt-12 swiper-pagination"></div>
+                </div>
+                </div>
+              </section>
+              
+              <style>
+                .swiper-pagination {
+                  bottom: 0;
+                  position: relative;
+                }
+              </style>
+
+            <!-- <div class="embla overflow-hidden ">
+                <div class="embla__viewport">
+                    <div class="embla__container flex">
+                        <div class="embla__slide flex-[0-0-100%]">
+                            <div class="embla__slide__inner">
+                                <img class="embla__slide__img" src="media/media-1.jpeg" />
+                            </div>
+                        </div>
+                        | <% for(let jabonesList=0; jabonesList < jabones.length; jabonesList++) { %>
+                            <div class="embla__slide__inner">
+                                <img class="embla__slide__img py-2 px-2 rounded-t-lg w-64 h-40 object-cover"
+                                            src="/images/productos/subidosporweb/<%= jabones[jabonesList].imagen %> "
+                                            alt="<%= jabones[jabonesList].alternative%>">                                                                    
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div> -->
+
 
             <section class="bg-white">
                 <div
@@ -80,7 +178,7 @@
             </section>
 
 
-            <section class="bg-white">
+            <!-- <section class="bg-white">
                 <div
                     class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
                     <div class="w-full h-[350px]">
@@ -89,8 +187,8 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
-                    <!-- <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image"> -->
-                    <!-- <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image"> -->
+                     <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image"> 
+                     <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
                     <div class="mt-4 md:mt-0 md:h-full">
                         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-marronDark dark:text-white">¿Como
                             usar
@@ -100,7 +198,7 @@
                             detallamos paso a paso como realizar un pedido desde esta web.</p>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
 
             <section class="bg-white" id="contact">
@@ -207,7 +305,7 @@
                     </span>
                 </div>
             </footer>
-
     </body>
-    <script src="javascripts/index.js"></script>
+    <script src="javascripts/index.js" type="module"></script>
+    <script src="javascripts/swiper.js"></script>
     <%- include('templates/footer') %>

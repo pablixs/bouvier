@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="<%= productos.descripcionlarga%>">
-    <meta name="keywords"
-        content="Cosmetica natural, cosmetica, jabones artesanales, bouvier artesanal, productos naturales, productos artesanales">
+        content="Catálogo de productos naturales, 100% libre de químicos y crueldad animal. Probá con nosotros.">
+    <meta name="keywords" content="cosmetica natural, cosmetica ecologica, cosmetica natural jabones, jabones artesanales, bouvier artesanal, cosmetica natural online, productos artesanales">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="Spanish">
@@ -16,22 +14,22 @@
     <title>
         <%= title %>
     </title>
+    <link rel="canonical" href="https://bouvierartesanal.com/productos/<%= productos[0].categoria%>"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/stylesheets/output.css">
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="/stylesheets/hamburguer.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L59D76Y09T"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-234715693-1">
+    </script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-L59D76Y09T');
+    gtag('config', 'UA-234715693-1');
     </script>
 </head>
 <!-- <script src="/javascripts/index.js"></script> -->
